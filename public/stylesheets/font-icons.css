@@ -1,0 +1,62 @@
+/*Font icons ----- */
+@font-face {
+  font-family: 'ptw-icons';
+  src: url("http://affiliates.com.s3.amazonaws.com/general/fonts/ptw-icons.eot?whfet5");
+  src: url("http://affiliates.com.s3.amazonaws.com/general/fonts/ptw-icons.eot?#iefixwhfet5") format("embedded-opentype"), url("http://affiliates.com.s3.amazonaws.com/general/fonts/ptw-icons.woff?whfet5") format("woff"), url("http://affiliates.com.s3.amazonaws.com/general/fonts/ptw-icons.ttf?whfet5") format("truetype"), url("http://affiliates.com.s3.amazonaws.com/general/fonts/ptw-icons.svg?whfet5#ptw-icons") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+.icon {
+  font-family: 'ptw-icons';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #666;
+  font-size: 2em;
+}
+
+.icon-cars:before {
+  content: "\e006"; }
+
+.icon-cruises:before {
+  content: "\e601"; }
+
+.icon-hotels:before {
+  content: "\e610"; }
+
+.icon-buses:before {
+  content: "\e611"; }
+
+.icon-transfers:before {
+  content: "\e616"; }
+
+.icon-flights:before {
+  content: "\e61b"; }
+
+.icon-tours:before {
+  content: "\e61c"; }
+
+.icon-circuits:before {
+  content: "\e61d"; }
+
+.icon-packages:before {
+  content: "\e620"; }
+
+
+
+.canal-propias{
+  color:#f04276;
+}
+
+.canal-terceros{
+  color:#007F16;
+}
+
+.canal-corporativo{
+  color:#00365B;
+}
