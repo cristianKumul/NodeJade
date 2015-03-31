@@ -1,0 +1,19 @@
+extend layout
+
+
+block content
+   
+
+   //script(src="/socket.io/socket.io.js")
+   
+   #map
+   script(src="./js/functions.min.js")
+   script(type='text/javascript').
+    //var socket= io();//io.connect('http://localhost:8080');//io();//io(); 
+    socket.on('connect', function() {
+      console.log('--- socket.on connect');
+    });
+    
+    
+   script(src="./js/map2.js")
+   script(src="./js/connection_2.min.js")

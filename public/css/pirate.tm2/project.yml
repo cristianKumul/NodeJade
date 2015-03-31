@@ -1,0 +1,27 @@
+_prefs: 
+  mapid: cristiankumul.eb03c723
+  saveCenter: false
+_properties: {}
+attribution: "<a href='http://mapbox.com/about/maps' target='_blank'>Terms & Feedback</a>"
+bounds: 
+  - -180
+  - -85.0511
+  - 180
+  - 85.0511
+center: 
+  - -82.9688
+  - 16.8466
+  - 4
+description: ''
+format: "png8:m=h:c=192"
+interactivity_layer: ''
+layers: null
+maxzoom: 21
+minzoom: 0
+name: Pirates Return
+source: "mapbox:///mapbox.mapbox-streets-v4"
+styles: 
+  - style.mss
+  - labels.mss
+  - illustrations.mss
+template: ''

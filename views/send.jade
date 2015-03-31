@@ -1,0 +1,56 @@
+extend layout
+
+block content
+	//table
+	fieldset(class="coords")
+			
+		fieldset
+			legend(class="coords") Coordenadas Origen
+			p Latitud  
+				input(type='text', id="OriginLat")
+			p Longitud 
+				input(type='text', id="OriginLon")
+	
+		fieldset
+			legend(class="coords") Coordenadas Destino
+			p Latitud  
+				input(type='text', id="DestLat")
+			p Longitud 
+				input(type='text', id="DestLon")
+		
+		button.btn(id="btn") Enviar
+
+	script(type='text/javascript').
+		$("#btn").click(function (){
+			
+			
+				var userId = Math.random().toString(16).substring(2,15);
+				
+				var Olat = $("#OriginLat").val();
+				var Olng = $("#OriginLon").val();//longitude;
+				var Dlat = $("#DestLat").val();
+				var Dlon = $("#DestLon").val();
+
+				// mark user's position
+				
+				sentData = {
+							id: userId,
+							active: true,
+							coords: [{
+								olat: Olat,
+								olng: Olng,
+								oacr: 0,
+								dlat: Dlat,
+								dlng: Dlon,
+								dacr:0
+							}],
+							
+						};
+
+
+				socket.emit('send:coords', sentData);
+			
+				alert("Eviado");
+
+			});
+

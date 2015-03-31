@@ -1,0 +1,96 @@
+
+doctype
+html
+
+  head
+  block head  
+      title #{title} - PriceTravel
+      
+      //link(rel='stylesheet', href='/css/map.css')
+      //link(rel='stylesheet', href='/css/map.css')
+      link(rel='stylesheet', href='/stylesheets/style.css')
+      link(href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css", rel="stylesheet")
+      link(rel='stylesheet', href="http://cdn.leafletjs.com/leaflet-0.7/leaflet.css")
+      script(src="/socket.io/socket.io.js")
+        
+        //var socket = io();
+      script(type='text/javascript').
+        var socket= io();
+           
+  body
+    
+    header
+      h1  #{title}
+       
+    .container
+      script(src="https://code.jquery.com/jquery-2.1.3.min.js")
+      script(src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js")
+      
+      script(src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.5/socket.io.js")
+      script(src="http://cdn.leafletjs.com/leaflet-0.7/leaflet.js")
+      script(src="/js/lib/leaflet.textpath.js")
+       
+    
+      block navBar
+      - var foo =  title   
+        nav(class='navbar navbar-default', role='navigation')
+              .container-fluid
+                  .navbar-header
+                      button(class='navbar-toggle', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
+                          span.sronly
+                          span.icon-bar
+                          span.icon-bar
+                          span.icon-bar
+                      //a(class='navbar-brand',href='/') PriceTravel
+                        #bs-example-navbar-collapse-1(class='collapse navbar-collapse')
+                  ul(class='nav navbar-nav')
+                      li  
+                          if foo == 'Index'
+                             a(class='navbar-brand',href='/#') HOME
+                          else
+                             a(href='/#') home
+                       li
+                          if foo == 'Test'
+                            a(class='navbar-brand',href='/test') TEST
+                          else
+                            a(href='/test') test
+                      li
+                          if foo == 'Send Data'
+                            a(class='navbar-brand',href='/send') SEND DATA
+                          else
+                            a(href='/send') send data
+                      li
+                          if foo == 'Mapa'
+                            a(class='navbar-brand',href='/map') MAP
+                          else
+                            a(href='/map') map
+                      li
+                          if foo == 'Gráfica'
+                            a(class='navbar-brand',href='/graph') GRÁFICA
+                          else
+                            a(href='/graph') gráfica
+                      li
+                          if foo == 'Mapa1'
+                            a(class='navbar-brand',href='/map1') MAPA1
+                          else
+                            a(href='/map1') mapa1
+                      
+      //#navbar-inverse.collapse.navbar-collapse
+          ul.nav.navbar-nav
+              li.active: a( href="/") Home
+              li: a( href="/send" ) Send
+              
+              li.dropdown
+                  a.dropdown-toggle( href="#", data-toggle="dropdown", role="button", aria-expanded="false" ) Map
+                      span.caret
+                  ul.dropdown-menu( role="menu" )
+                      li: a( href="#" ) Origins
+                      li: a( href="#" ) All transactions
+                      
+      .main-content
+        block content
+
+      //.sidebar
+        block sidebar
+    footer
+      p PriceTravel 

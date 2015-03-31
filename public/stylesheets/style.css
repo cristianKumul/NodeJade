@@ -1,0 +1,273 @@
+/*
+ * Import nib
+ */
+/*
+ * Grab a custom font from Google
+ */
+@import url("http://fonts.googleapis.com/css?family=Quicksand");
+/*
+ * Nib provides a CSS reset
+ */
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-family: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+body {
+  line-height: 1;
+  color: #000;
+  background: #fff;
+}
+ol,
+ul {
+  list-style: none;
+}
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+  vertical-align: middle;
+}
+caption,
+th,
+td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+a img {
+  border: none;
+}
+/*
+ * Store the main color and
+ * background color as variables
+ */
+body {
+  font-family: 'Georgia';
+  background-color: #f2efd5;
+  color: #444;
+}
+header {
+  font-family: 'Quicksand';
+  padding: 5px 10px;
+  color: #fff;
+  font-size: 25px;
+  text-align: center;
+  top:0px;
+/*
+   * Note the use of the `main-color`
+   * variable and the `darken` function
+   */
+  background-color: #09c4a8;
+  border-bottom: 1px solid #068976;
+  text-shadow: 0px -1px 0px #068976;
+}
+.container {
+  width: 500px;
+  margin: 50px auto;
+  overflow: hidden;
+}
+.main-content {
+  float: left;
+  width: 300px;
+}
+.main-content p {
+  margin-bottom: 20px;
+}
+.sidebar {
+  float: left;
+  width: 200px;
+}
+.sidebar .widget {
+/*
+     * Note the lack of vendor
+     * prefixes here. Nib will
+     * add them for us
+     */
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+  margin-left: 20px;
+  background-color: #f2efd5;
+  -webkit-box-shadow: inset 0px 0px 0px 3px rgba(255,255,255,0.8), 0px 3px 0px -2px rgba(0,0,0,0.1);
+  box-shadow: inset 0px 0px 0px 3px rgba(255,255,255,0.8), 0px 3px 0px -2px rgba(0,0,0,0.1);
+}
+.sidebar .widget h1 {
+  font-family: 'Quicksand';
+  margin: 13px 10px 4px;
+  padding-bottom: 10px;
+  border-bottom: 1px dotted #ddd;
+  -webkit-border-radius: 2px 2px 0px 0px;
+  border-radius: 2px 2px 0px 0px;
+  margin-bottom: 10px;
+}
+.sidebar .widget p {
+  font-size: 13px;
+  padding: 0px 10px;
+  margin-bottom: 10px;
+}
+p {
+  line-height: 1.8;
+}
+footer {
+  width: 500px;
+  margin: 50px auto;
+  border-top: 1px dotted #ccc;
+  padding-top: 5px;
+  font-size: 13px;
+}
+#fullmap {
+        position: fixed;
+        top: 0px;
+        left: 0%;
+        width: 100%;
+        height: 100%
+
+    }
+#map {
+        position: fixed;
+        top: 180px;
+        left: 0%;
+        width: 100%;
+        height: 80%
+
+    }
+    .help {
+        font-size: 1.5em;
+        position: absolute;
+        top:0;
+        left: 0;
+        right: 0;
+        height: 30px;
+        z-index: 10;
+        background-color: rgba(0,0,0,0.5);
+        color: white;
+        padding: 10px;
+        margin: 0px;
+        text-align: center;
+    }
+    .help a.sources {
+        float: left;
+        margin-left: 50px;
+        color: white;
+    }
+    .help a.logo {
+        float: right;
+    }
+    .help a.logo img {
+        height: 30px;
+    }
+.navbar .navbar-nav {
+  display: inline-block;
+  float: none;
+  vertical-align: top;
+  
+
+
+
+}
+
+.navbar .navbar-collapse {
+  text-align: center;
+}
+.navbar-default{
+  top:0px;
+  text-align: center;
+}
+.navbar-custom {
+    background-color:#04B486;
+    color:#00FFBF;
+    border-radius:0;
+    position: relative;
+}
+
+.navbar-custom .navbar-nav > li > a {
+    color:#fff;
+}
+.navbar-custom .navbar-nav > .active > a, .navbar-nav > .active > a:hover, .navbar-nav > .active > a:focus {
+    color: #00FFBF;
+    background-color:#000000;
+}
+.navbar-custom .navbar-brand {
+    color:#eeeeee;
+}
+.popup-canal1 .leaflet-popup-content-wrapper{
+
+  background-color: #2196F3;
+  color:#fff;
+
+}
+
+.popup-canal2 .leaflet-popup-content-wrapper{
+
+  background-color:#607D8B;
+  color:#fff;
+}
+
+.popup-canal3 .leaflet-popup-content-wrapper{
+
+  background-color:#8BC34A;
+   color:#fff;
+  
+}

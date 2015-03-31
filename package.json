@@ -1,0 +1,20 @@
+{
+  "name": "NodeJade",
+  "version": "1.0.0",
+  "description": "ExpressServer ",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.12.2",
+    "morgan": "^1.5.1",
+    "jade": "^1.9.2",
+    "nib": "^1.1.0",
+    "stylus": "^0.50.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC"
+}

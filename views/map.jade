@@ -1,0 +1,18 @@
+extend layout
+
+
+block content
+   
+
+   //script(src="/socket.io/socket.io.js")
+   
+   #fullmap
+   script(type='text/javascript').
+    //var socket= io();//io.connect('http://localhost:8080');//io();//io(); 
+    socket.on('connect', function() {
+      console.log('--- socket.on connect');
+    });
+    
+    
+   script(src="./js/fullmap.js")
+   script(src="./js/newConnection.js")
