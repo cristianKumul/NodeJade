@@ -19,14 +19,42 @@ var blueIcon = new tinyIcon({iconUrl:'../assets/marker-blue.png'});
 
 var icons=[];
 
-icons.push(new tinyIcon({ iconUrl: '../assets/1.png' }),new tinyIcon({ iconUrl: '../assets/2.png' }),
-			new tinyIcon({ iconUrl: '../assets/3.png' }),
-			new tinyIcon({ iconUrl: '../assets/4.png' }),
-			new tinyIcon({ iconUrl: '../assets/5.png' }),
-			new tinyIcon({ iconUrl: '../assets/6.png' }),
-			new tinyIcon({ iconUrl: '../assets/7.png' }),
-			new tinyIcon({ iconUrl: '../assets/8.png' }),
-			new tinyIcon({ iconUrl: '../assets/9.png' }));
+icons.push(L.AwesomeMarkers.icon({
+    icon: '\e610',
+    markerColor: 'red'
+  }),
+L.AwesomeMarkers.icon({
+    icon: '\e610',
+    markerColor: 'red'
+  }),
+L.AwesomeMarkers.icon({
+    icon: '\e610',
+    markerColor: 'red'
+  }),
+L.AwesomeMarkers.icon({
+    icon: '\e610',
+    markerColor: 'red'
+  }),
+L.AwesomeMarkers.icon({
+    icon: '\e610',
+    markerColor: 'red'
+  }),
+L.AwesomeMarkers.icon({
+    icon: '\e610',
+    markerColor: 'red'
+  }),
+  L.AwesomeMarkers.icon({
+    icon: '\e610',
+    markerColor: 'red'
+  }),
+  L.AwesomeMarkers.icon({
+    icon: '\e610',
+    markerColor: 'red'
+  }),
+  L.AwesomeMarkers.icon({
+    icon: '\e610',
+    markerColor: 'red'
+  }));
 socket.on('load:coords', function(data) {
 	var n = Object.keys(markers).length;
 	//alert(n);
