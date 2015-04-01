@@ -1,62 +1,15 @@
 var connects = {};
 var markers = {};
-var currentDest;
-var	markerDest ={};
-var listMarker=[],last;
+var listMarker=[];
 var markerId;
-/*socket.on('oldcoords',function(data) {
-	// body...
-	
-	for (var i = 0; i < data.length; i++) {
-		setMarker(data[i]);
-	}
 
-});*/
-var redIcon = new tinyIcon({ iconUrl: '../assets/marker-red.png' });
-var yellowIcon = new tinyIcon({ iconUrl: '../assets/marker-yellow.png' });
-var blueIcon = new tinyIcon({iconUrl:'../assets/marker-blue.png'});
 
 
 var icons=['hotels','transfers','flights','tours','cars','packages','buses','cruises','circuits'],
 	canal=['propias','terceros','corporativo'],
 	colorCanal=['#f04276','#007F16','#00365B'];
 
-/*icons.push(L.AwesomeMarkers.icon({
-    icon: 'coffee',
-    markerColor: 'red'
-  }),
-L.AwesomeMarkers.icon({
-    icon: '\e610',
-    markerColor: 'red'
-  }),
-L.AwesomeMarkers.icon({
-    icon: '\e610',
-    markerColor: 'red'
-  }),
-L.AwesomeMarkers.icon({
-    icon: '\e610',
-    markerColor: 'red'
-  }),
-L.AwesomeMarkers.icon({
-    icon: '\e610',
-    markerColor: 'red'
-  }),
-L.AwesomeMarkers.icon({
-    icon: '\e610',
-    markerColor: 'red'
-  }),
-  L.AwesomeMarkers.icon({
-    icon: '\e610',
-    markerColor: 'red'
-  }),
-  L.AwesomeMarkers.icon({
-    icon: '\e610',
-    markerColor: 'red'
-  }),
-  L.AwesomeMarkers.icon({
-    icon: '\e610',
-    markerColor: 'red'
-  }));*/
+
 socket.on('load:coords', function(data) {
 	var n = Object.keys(markers).length;
 	//alert(n);
@@ -145,7 +98,5 @@ function bar(data){
 
     	//alert(tabla);
     	myControl._div.innerHTML = tabla;
-    	//alert(myControl._div.innerHTML);
-    	//var inner = myControl.getContainer().innerHTML;
-        //alert(myControl.getContainer().innerHTML);
+    	
 }
