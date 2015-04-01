@@ -55,8 +55,12 @@ html
                              a(class='navbar-brand',href='/#') HOME
                           else
                              a(href='/#') home
-                       
-                      //li
+                       li
+                          if foo == 'Test'
+                            a(class='navbar-brand',href='/test') TEST
+                          else
+                            a(href='/test') test
+                      li
                           if foo == 'Send Data'
                             a(class='navbar-brand',href='/send') SEND DATA
                           else
@@ -67,16 +71,11 @@ html
                           else
                             a(href='/map') map
                       li
-                          if foo == 'Test'
-                            a(class='navbar-brand',href='/test') TEST
-                          else
-                            a(href='/test') test
-                      //li
                           if foo == 'Gráfica'
                             a(class='navbar-brand',href='/graph') GRÁFICA
                           else
                             a(href='/graph') gráfica
-                      //li
+                      li
                           if foo == 'Mapa1'
                             a(class='navbar-brand',href='/map1') MAPA1
                           else

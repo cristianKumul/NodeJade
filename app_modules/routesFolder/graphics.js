@@ -1,5 +1,5 @@
 module.exports = function(req, res){
-  res.render('graphics', {
+  res.render('icons', {
     title: 'Gráfica'
   });
 };
