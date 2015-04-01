@@ -32,7 +32,7 @@ app.use(express.static(__dirname + '/public'));
 app.get('/', require('./app_modules/routesFolder/index'));
 app.get('/send', require('./app_modules/routesFolder/send'));
 app.get('/map', require('./app_modules/routesFolder/map'));
-app.get('/graph',require('./app_modules/routesFolder/graphics'));
+app.get('/icons',require('./app_modules/routesFolder/graphics'));
 app.get('/map1',require('./app_modules/routesFolder/map1'))
 app.get('/test',require('./app_modules/routesFolder/test'))
 // Se crea la base de datos
