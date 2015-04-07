@@ -1,0 +1,40 @@
+extend layout
+
+block content
+	fieldset(class="coords")
+			
+		fieldset
+			legend(class="coords") Intervalo de ventas
+			p Tiempo (s):
+				input(type='number', min='1',id="tiempoVentas")
+			
+	
+		fieldset
+			legend(class="coords") Duración de los marcadores en el mapa
+			p Duración (s)   
+				input(type='number', min='1',id="tiempoMarcador")
+			
+		
+		button.btn(id="btn") Enviar
+
+	script(type='text/javascript').
+		$("#btn").click(function (){
+			
+			
+				
+				var ventasT = $("#tiempoVentas").val();
+				var marcadorT = $("#tiempoMarcador").val();//longitude;
+				
+				// mark user's position
+				
+				sentData = {
+							ventas: ventasT,
+							marcador: marcadorT	
+						};
+
+
+				socket.emit('config:server', sentData);
+			
+				alert("Eviado");
+
+			});

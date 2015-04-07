@@ -1,7 +1,9 @@
 var connects = {};
 var markers = {};
+var coordinates={};
 var listMarker=[];
 var markerId;
+var tiempoMarcador=30000;
 
 
 
@@ -9,17 +11,35 @@ var icons=['hotels','transfers','flights','tours','cars','packages','buses','cru
 	canal=['propias','terceros','corporativo'],
 	colorCanal=['#f04276','#007F16','#00365B'];
 
+socket.on('config:client', function(data) {
 
+			tiempoMarcador=data.marcador*1000;
+			
+});
 socket.on('load:coords', function(data) {
 	var n = Object.keys(markers).length;
 	//alert(n);
-	markerId = Math.random().toString(16).substring(2,15);
-	if (!(markerId in markers) &&  n < 10) {
+	markerId = data.id;//Math.random().toString(16).substring(2,15);
+	if (!(data.id in connects) ) {
+		
+		var currentCoord = new  L.LatLng(data.destino.lat,data.destino.lon);
+		if(currentCoord in coordinates){
+				console.log("Existe");
+				var randomlat = (Math.random() * (0.001 - (-0.001)) + (-0.001));
+				var randomlon = (Math.random() * (0.001 - (-0.001)) + (-0.001));
+				console.log(randomlat);
+				console.log(randomlon);
+				data.destino.lat= data.destino.lat+randomlat;
+				data.destino.lon=data.destino.lon+randomlon;
+				console.log(coordinates);
+				
+			}
 		setMarker(data);
 		listMarker.push(data);
 
 	}
-	else{
+	
+	/*else{
 		var lastKey;
 		for(var key in markers){
 		    if(markers.hasOwnProperty(key)){
@@ -32,7 +52,10 @@ socket.on('load:coords', function(data) {
 		delete markers[lastKey];
 		//alert(lastKey);
 		setMarker(data);
-	}
+	}*/
+	connects[data.id] = data;
+	connects[data.id].updated = $.now();
+
 
 	
 });
@@ -46,12 +69,14 @@ function setMarker(data) {
 			    markerColor: 'red'
 			  });
 			var marker = L.marker([data.destino.lat, data.destino.lon], { icon: L.AwesomeMarkers.icon({icon: icons[data.tipoServicio -1], prefix: 'icon', markerColor: canal[data.canal -1], spin:false}) }).addTo(map);	
-		
+
+			coordinates[marker.getLatLng()] = data.id;
+			
 		//var marker = L.marker([data.coords[0].olat, data.coords[0].olng], { icon: yellowIcon}).addTo(map);
 		marker.bindPopup('<p>¡Una venta aquí!<br>Usuario:<b>'+data.tipoServicio+'</b><br>Destino:['+data.destino.lat+','+data.destino.lon+']<br>' + '<a href="#" id="showRoute" data-coords=\'{"olat":"'+data.destino.lon+'","olng":"'+data.destino.lon+'","dlat":"'+data.destino.lon+'","dlng":"'+data.destino.lon+'"}\' onclick="drawPolyline();return false;" >Ver ruta</a></p> ');
 		//
-		markers[markerId] = marker;//tmp={olat:'+data.coords[0].olat+',olng:'+data.coords[0].olng+',dlat:'+data.coords[0].dlat+',dlng:'+data.coords[0].dlng+'}
-		map.addLayer(markers[markerId]);
+		markers[data.id] = marker;//tmp={olat:'+data.coords[0].olat+',olng:'+data.coords[0].olng+',dlat:'+data.coords[0].dlat+',dlng:'+data.coords[0].dlng+'}
+		map.addLayer(markers[data.id]);
 		bar([icons[data.tipoServicio -1],canal[data.canal -1]]);
 		}
 		else{
@@ -75,8 +100,8 @@ function setMarker(data) {
    					 console.log(layer._latlng);
    					 i=i+1;
 				});
-			markers[markerId] = circuito;
-			map.addLayer(markers[markerId]);
+			markers[data.id] = circuito;
+			map.addLayer(markers[data.id]);
 			//alert("Circuito");
 		}
 		//var destmarker = L.marker([data.coords[0].dlat, data.coords[0].dlng], { icon: redIcon}).addTo(map);
@@ -100,3 +125,16 @@ function bar(data){
     	myControl._div.innerHTML = tabla;
     	
 }
+
+
+// elimina cada n tiempo el marcador que cumpla la condici
+setInterval(function() {
+	for (var ident in connects){
+		if ($.now() - connects[ident].updated > tiempoMarcador) {
+			delete connects[ident];
+			delete coordinates[markers[ident].getLatLng()];
+			map.removeLayer(markers[ident]);
+
+		}
+	}
+}, tiempoMarcador);
