@@ -10,44 +10,79 @@ block content
 		//button.btn(id="btnStop") Detener Envio
 		
 	script(src="./js/datos.js")
+	script(src="./data/reservas.js")
 	script(type='text/javascript').
-		var interval;
+		var interval,tiempoEnvio;
 		var destinoRand;
-		function enviar(){
-			
-			setInterval(function(){
-				var userId = Math.random().toString(16).substring(2,15);
-				var xServicio = Math.floor((Math.random() * 9) + 1);
-				if (xServicio!=9){
-				   destinoRand = normalCoord[Math.floor((Math.random() * normalCoord.length-2) + 1)];
-				}
-				else{
-				   destinoRand = circuitoCoord[Math.floor((Math.random() * 2) )];
-				   console.log("circuitoCoord: "+destinoRand);
-				}
+		var index = 0;
+		tiempoEnvio=5000,interval;
+		socket.on('config:client', function(data) {
 
-				var canalRand = Math.floor((Math.random() * 3) + 1);
-				// mark user's position
+			tiempoEnvio=data.ventas*1000;
+			
+		});
+		function getData(){
+			var userId = Math.random().toString(16).substring(2,15);
+
+			var history = reservas;
+			
+			
+			/*var xServicio = Math.floor((Math.random() * 9) + 1);
+			if (xServicio!=9){
+			   destinoRand = normalCoord[Math.floor((Math.random() * normalCoord.length-2) + 1)];
+			}
+			else{
+			   destinoRand = circuitoCoord[Math.floor((Math.random() * 2) )];
+			   console.log("circuitoCoord: "+destinoRand);
+			}
+
+			var canalRand = Math.floor((Math.random() * 3) + 1);
+			// mark user's position
+			
+			sentData = {
+						id:userId,
+						tipoServicio: xServicio,
+						destino: destinoRand,
+						canal:canalRand,
+						informacion:{
+							 titulo:"Prueba "+"Canal "+ canalRand,
+							 ciudadOrigenVenta: "Cancún",
+							 descripcion:"descripcion prueba"
+				 		}	 
+						
+					};*/
+			if ( index == history.length){
+				index = 0;
 				
-				sentData = {
-							tipoServicio: xServicio,
-							destino: destinoRand,
-							canal:canalRand,
-							informacion:{
-								 titulo:"Prueba "+"Canal "+ canalRand,
-								 ciudadOrigenVenta: "Cancún",
-								 descripcion:"descripcion prueba"
-					 		}	 
-							
-						};
-
-
-				socket.emit('intervalCoords', sentData);
+				
+			}
 			
-				console.log(sentData);
+			data = history[index]; 
+			
 
-			},1000);
+			
+			data.id = userId;
+			socket.emit('intervalCoords', data);
+			//console.log(sentData);
+			//console.log(tiempoEnvio);
+			console.log(data);
+			clearInterval(interval);
+			interval = setInterval(getData,tiempoEnvio);
+			index+=1;
+		};
+		
+		interval = setInterval(getData,tiempoEnvio);	
+		/*setInterval(function(){
+			
 
-		}
-		$("#btn").click( interval=enviar());
+			var sentData = getData();
+			socket.emit('intervalCoords', sentData);
+		
+			console.log(sentData);
+			console.log(tiempoEnvio);
+		},tiempoEnvio);
+		*/
+
+		//}
+		//$("#btn").click( interval=enviar());
 		//$("#btnStop").click(clearInterval(interval))

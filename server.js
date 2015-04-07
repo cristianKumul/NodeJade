@@ -46,6 +46,12 @@ io.sockets.on('connection', function (socket) {
         socket.broadcast.emit('load:coords', data);
        
     });
+    socket.on('config:server', function (data) {
+       //Se transmite hacia los usuarios conectados
+        //console.log(data);
+        socket.broadcast.emit('config:client', data);
+       
+    });
 
 });
 
