@@ -68,7 +68,7 @@ function setMarker(data) {
 			    icon: 'coffee',
 			    markerColor: 'red'
 			  });
-			var marker = L.marker([data.destino.lat, data.destino.lon], { icon: L.AwesomeMarkers.icon({icon: icons[data.tipoServicio -1], prefix: 'icon', markerColor: canal[data.canal -1], spin:false}) }).addTo(map);	
+			var marker = L.marker([data.destino.lat, data.destino.lon], { bounceOnAdd: true, bounceOnAddOptions: {duration: 500, height: 50}, icon: L.AwesomeMarkers.icon({icon: icons[data.tipoServicio -1], prefix: 'icon', markerColor: canal[data.canal -1], spin:false}) }).addTo(map);	
 
 			coordinates[marker.getLatLng()] = data.id;
 			
@@ -80,7 +80,7 @@ function setMarker(data) {
 		bar([icons[data.tipoServicio -1],canal[data.canal -1]]);
 		}
 		else{
-			var marker2 = L.marker([data.destino[0].lon, data.destino[0].lat], { icon: L.AwesomeMarkers.icon({icon: icons[data.tipoServicio -1], prefix: 'icon', markerColor: canal[data.canal -1], spin:false}) }).addTo(map);
+			var marker2 = L.marker([data.destino[0].lon, data.destino[0].lat], { bounceOnAdd: true, bounceOnAddOptions: {duration: 500, height: 50}, icon: L.AwesomeMarkers.icon({icon: icons[data.tipoServicio -1], prefix: 'icon', markerColor: canal[data.canal -1], spin:false}) }).addTo(map);
 			marker2.bindPopup('<p>¡Una venta aquí!<br>Usuario:<b>'+data.tipoServicio+'</b><br>Destino:['+data.destino.lat+','+data.destino.lon+']<br>' + '<a href="#" id="showRoute" data-coords=\'{"olat":"'+data.destino.lon+'","olng":"'+data.destino.lon+'","dlat":"'+data.destino.lon+'","dlng":"'+data.destino.lon+'"}\' onclick="drawPolyline();return false;" >Ver ruta</a></p> ');
 			bar([icons[data.tipoServicio -1],canal[data.canal -1]]);
 			var circuito = L.layerGroup([marker2]);
