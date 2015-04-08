@@ -3,7 +3,7 @@ var markers = {};
 var coordinates={};
 var listMarker=[];
 var markerId;
-var tiempoMarcador=30000;
+var tiempoMarcador=3000;
 
 
 
@@ -68,7 +68,7 @@ function setMarker(data) {
 			    icon: 'coffee',
 			    markerColor: 'red'
 			  });
-			var marker = L.marker([data.destino.lat, data.destino.lon], { icon: L.AwesomeMarkers.icon({icon: icons[data.tipoServicio -1], prefix: 'icon', markerColor: canal[data.canal -1], spin:false}) }).addTo(map);	
+			var marker = L.marker([data.destino.lat, data.destino.lon], {  icon: L.AwesomeMarkers.icon({icon: icons[data.tipoServicio -1], prefix: 'icon', markerColor: canal[data.canal -1], spin:false}) }).addTo(map);	
 
 			coordinates[marker.getLatLng()] = data.id;
 			
@@ -137,4 +137,4 @@ setInterval(function() {
 
 		}
 	}
-}, tiempoMarcador);
+}, 1000);
