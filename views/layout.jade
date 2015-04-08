@@ -11,6 +11,7 @@ html
       link(rel='stylesheet', href='/stylesheets/style.css')
       link(href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css", rel="stylesheet")
       link(rel='stylesheet', href="http://cdn.leafletjs.com/leaflet-0.7/leaflet.css")
+      link(rel='stylesheet', href="/stylesheets/custom-leaflet.css")
       link(rel='stylesheet', href="/stylesheets/font-icons.css")
       link(rel='stylesheet', href="/stylesheets/leaflet.awesome-markers.css")
       link(rel='stylesheet', href="http://code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css")
@@ -31,7 +32,6 @@ html
     .container
       script(src="https://code.jquery.com/jquery-2.1.3.min.js")
       script(src="//code.jquery.com/ui/1.11.4/jquery-ui.js")
-      script(src="http://maximeh.github.io/leaflet.bouncemarker/bouncemarker.js")
       script(src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js")
       
       script(src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.5/socket.io.js")
@@ -39,7 +39,6 @@ html
       script(src="/js/lib/leaflet.textpath.js")
       script(src="/js/leaflet.awesome-markers.js") 
       script(src="/js/bouncemarker.js")
-    
       block navBar
       - var foo =  title   
         nav(class='navbar navbar-default', role='navigation')
