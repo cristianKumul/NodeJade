@@ -36,6 +36,16 @@ socket.on('load:coords', function(data) {
 			}
 		setMarker(data);
 		listMarker.push(data);
+		var markersBounds = [];
+		if ( Object.keys(markers).length > 1){
+			for (var i in markers){
+				markersBounds.push(markers[i]);
+				//console.log(markers[i]);
+			} 
+			var group= new L.featureGroup(markersBounds);
+			map.fitBounds(group.getBounds());
+			console.log( Object.keys(markers).length);
+		}
 
 	}
 	
@@ -71,6 +81,7 @@ function setMarker(data) {
 			var marker = L.marker([data.destino.lat, data.destino.lon], { bounceOnAdd: true, bounceOnAddOptions: {duration: 500, height: 50}, icon: L.AwesomeMarkers.icon({icon: icons[data.tipoServicio -1], prefix: 'icon', markerColor: canal[data.canal -1], spin:false}) }).addTo(map);	
 
 			coordinates[marker.getLatLng()] = data.id;
+
 			
 		//var marker = L.marker([data.coords[0].olat, data.coords[0].olng], { icon: yellowIcon}).addTo(map);
 		marker.bindPopup('<p>¡Una venta aquí!<br>Usuario:<b>'+data.tipoServicio+'</b><br>Destino:['+data.destino.lat+','+data.destino.lon+']<br>' + '<a href="#" id="showRoute" data-coords=\'{"olat":"'+data.destino.lon+'","olng":"'+data.destino.lon+'","dlat":"'+data.destino.lon+'","dlng":"'+data.destino.lon+'"}\' onclick="drawPolyline();return false;" >Ver ruta</a></p> ');
@@ -131,10 +142,12 @@ function bar(data){
 setInterval(function() {
 	for (var ident in connects){
 		if ($.now() - connects[ident].updated > tiempoMarcador) {
+			console.log(markers[ident]);
 			delete connects[ident];
 			delete coordinates[markers[ident].getLatLng()];
 			map.removeLayer(markers[ident]);
+			delete markers[ident];
 
 		}
 	}
-}, tiempoMarcador);
+}, 1000);
