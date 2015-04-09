@@ -17,6 +17,7 @@ var priceIcon = new tinyIcon({iconUrl:'../assets/price.jpg'});
 
 var osm = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: 'Map data &copy; 2014 OpenStreetMap contributors',
+            minZoom:2
         });
 
 var map = L.map('map')

@@ -3,7 +3,7 @@ var markers = {};
 var coordinates={};
 var listMarker=[];
 var markerId;
-var tiempoMarcador=30000;
+var tiempoMarcador=900000;
 
 
 
@@ -23,6 +23,7 @@ socket.on('load:coords', function(data) {
 	if (!(data.id in connects) ) {
 		
 		var currentCoord = new  L.LatLng(data.destino.lat,data.destino.lon);
+		console.log(coordinates+" fuera del if");
 		if(currentCoord in coordinates){
 				console.log("Existe");
 				var randomlat = (Math.random() * (0.001 - (-0.001)) + (-0.001));
@@ -37,14 +38,14 @@ socket.on('load:coords', function(data) {
 		setMarker(data);
 		listMarker.push(data);
 		var markersBounds = [];
-		if ( Object.keys(markers).length > 1){
+		if ( Object.keys(markers).length > 2){
 			for (var i in markers){
 				markersBounds.push(markers[i]);
 				//console.log(markers[i]);
 			} 
 			var group= new L.featureGroup(markersBounds);
-			map.fitBounds(group.getBounds());
-			console.log( Object.keys(markers).length);
+			map.fitBounds(group.getBounds(),{maxZoom:10});
+			//console.log( Object.keys(markers).length);
 		}
 
 	}
