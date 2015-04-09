@@ -22,8 +22,8 @@ socket.on('load:coords', function(data) {
 	markerId = data.id;//Math.random().toString(16).substring(2,15);
 	if (!(data.id in connects) ) {
 		
-		var currentCoord = new  L.LatLng(data.destino.lat,data.destino.lon);
-		console.log(coordinates+" fuera del if");
+		/*var currentCoord =new  L.LatLng(data.destino.lat,data.destino.lon);//'LatLng('+data.destino.lat+', '+data.destino.lon+')';//new  L.LatLng(data.destino.lat,data.destino.lon);
+		
 		if(currentCoord in coordinates){
 				console.log("Existe");
 				var randomlat = (Math.random() * (0.001 - (-0.001)) + (-0.001));
@@ -34,9 +34,10 @@ socket.on('load:coords', function(data) {
 				data.destino.lon=data.destino.lon+randomlon;
 				console.log(coordinates);
 				
-			}
+			}*/
+		
 		setMarker(data);
-		listMarker.push(data);
+		
 		var markersBounds = [];
 		if ( Object.keys(markers).length > 2){
 			for (var i in markers){
@@ -44,7 +45,7 @@ socket.on('load:coords', function(data) {
 				//console.log(markers[i]);
 			} 
 			var group= new L.featureGroup(markersBounds);
-			map.fitBounds(group.getBounds(),{maxZoom:10});
+			map.fitBounds(group.getBounds(),{maxZoom:15});
 			//console.log( Object.keys(markers).length);
 		}
 
@@ -75,12 +76,13 @@ socket.on('load:coords', function(data) {
 function setMarker(data) {
 	//for (var i = 0; i < data.coords.length; i++) {
 		if(data.tipoServicio!=9){
-			var redMarker = L.AwesomeMarkers.icon({
-			    icon: 'coffee',
-			    markerColor: 'red'
-			  });
-			var marker = L.marker([data.destino.lat, data.destino.lon], { bounceOnAdd: true, bounceOnAddOptions: {duration: 500, height: 50}, icon: L.AwesomeMarkers.icon({icon: icons[data.tipoServicio -1], prefix: 'icon', markerColor: canal[data.canal -1], spin:false}) }).addTo(map);	
+			
+			var marker = L.marker([data.destino.lat, data.destino.lon],
+								{ bounceOnAdd: true, bounceOnAddOptions: {duration: 500, height: 50},
+								 icon: L.AwesomeMarkers.icon({icon: icons[data.tipoServicio -1], prefix: 'icon', markerColor: canal[data.canal -1], spin:false}) }).addTo(map);	
 
+
+		
 			coordinates[marker.getLatLng()] = data.id;
 
 			
@@ -89,6 +91,35 @@ function setMarker(data) {
 		//
 		markers[data.id] = marker;//tmp={olat:'+data.coords[0].olat+',olng:'+data.coords[0].olng+',dlat:'+data.coords[0].dlat+',dlng:'+data.coords[0].dlng+'}
 		map.addLayer(markers[data.id]);
+
+		if(marker.getLatLng() in coordinates){
+				console.log("Existe");
+				var randomlat = (Math.random() * (0.001 - (-0.001)) + (-0.001));
+				var randomlon = (Math.random() * (0.001 - (-0.001)) + (-0.001));
+				console.log(randomlat);
+				console.log(randomlon);
+				newCoord = new L.LatLng(data.destino.lat+randomlat,data.destino.lon+randomlon);
+				marker.setLatLng(newCoord);
+				marker.update();
+				//data.destino.lat= data.destino.lat+randomlat;
+				//data.destino.lon=data.destino.lon+randomlon;
+				console.log(marker.getLatLng());
+				delete connects[data.id];
+				delete coordinates[markers[data.id].getLatLng()];
+				map.removeLayer(markers[data.id]);
+				delete markers[data.id];
+				var marker = L.marker([data.destino.lat+randomlat, data.destino.lon+randomlon],
+								{ bounceOnAdd: true, bounceOnAddOptions: {duration: 500, height: 50},
+								 icon: L.AwesomeMarkers.icon({icon: icons[data.tipoServicio -1], prefix: 'icon', markerColor: canal[data.canal -1], spin:false}) }).addTo(map);	
+
+				coordinates[marker.getLatLng()] = data.id;
+				markers[data.id] = marker;
+				map.addLayer(markers[data.id]);
+			}
+
+
+
+
 		bar([icons[data.tipoServicio -1],canal[data.canal -1]]);
 		}
 		else{
@@ -127,7 +158,7 @@ function bar(data){
     	}
     	myControl.queue.push(data);
     	
-    	tabla = '<div><nav class="navbar navbar-default"><div class="container-fluid"><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav">';
+    	tabla = '<div><nav class="navbar navbar-barra"><div class="container-fluid"><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav">';
     	for(var i=0; i<myControl.queue.length; i++){
     		tabla =  tabla + '<li><a href="#"><span class="icon icon-'+myControl.queue[i][0]+ ' canal-'+myControl.queue[i][1]+'"></span></a></li>';
     	}

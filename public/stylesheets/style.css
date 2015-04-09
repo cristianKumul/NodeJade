@@ -252,6 +252,72 @@ footer {
 .navbar-custom .navbar-brand {
     color:#eeeeee;
 }
+
+/*barra*/
+
+
+nav.navbar.navbar-barra {
+    background: none;
+    border: none;
+}
+
+nav.navbar.navbar-barra a{
+  margin: 30% 0 0 0;
+  padding: 0;
+}
+
+nav.navbar.navbar-barra span {
+    padding: 10px;
+    background: #ddd;
+    border-radius: 50%;
+    border: 2px solid;
+    border-color: #999;
+    margin: 5px;
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+nav.navbar.navbar-barra span:hover{
+  box-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+nav.navbar.navbar-barra .canal-propias{
+  color: #fff;
+  background: -webkit-linear-gradient(left top, #ED1D5B, #F36892);
+  background: -o-linear-gradient(bottom right, #ED1D5B, #F36892);
+  background: -moz-linear-gradient(bottom right, #ED1D5B, #F36892);
+  background: linear-gradient(to bottom right, #ED1D5B, #F36892);
+  border-color: #ED1D5B;
+}
+
+nav.navbar.navbar-barra .canal-terceros{
+  color: #fff;
+  background: -webkit-linear-gradient(left top, #00253D, #00568F);
+  background: -o-linear-gradient(bottom right, #00253D, #00568F);
+  background: -moz-linear-gradient(bottom right, #00253D, #00568F);
+  background: linear-gradient(to bottom right, #00253D, #00568F);
+  border-color: #00253D;
+}
+
+nav.navbar.navbar-barra .canal-corporativo{
+  color: #fff;
+  background: -webkit-linear-gradient(left top, #00520E, #00A31B);
+  background: -o-linear-gradient(bottom right, #00520E, #00A31B);
+  background: -moz-linear-gradient(bottom right, #00520E, #00A31B);
+  background: linear-gradient(to bottom right, #00520E, #00A31B);
+  border-color: #00520E;
+}
+/*--------------------------*/
+
+
+
+
+
+
+
 .popup-canal1 .leaflet-popup-content-wrapper{
 
   background-color: #2196F3;
