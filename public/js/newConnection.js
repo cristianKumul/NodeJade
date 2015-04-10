@@ -45,7 +45,7 @@ socket.on('load:coords', function(data) {
 				//console.log(markers[i]);
 			} 
 			var group= new L.featureGroup(markersBounds);
-			map.fitBounds(group.getBounds(),{maxZoom:15});
+			map.fitBounds(group.getBounds(),{padding: [50, 50],maxZoom:15});
 			//console.log( Object.keys(markers).length);
 		}
 
