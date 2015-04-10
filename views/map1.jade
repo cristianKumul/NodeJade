@@ -6,9 +6,7 @@ block content
 
    //script(src="/socket.io/socket.io.js")
    
-   #map
-   link(rel='stylesheet', href="/stylesheets/cilogi-marker.css")
-   script(src="./js/cilogi-marker.js")
+   #fullmap
    script(type='text/javascript').
     //var socket= io();//io.connect('http://localhost:8080');//io();//io(); 
     socket.on('connect', function() {
@@ -16,44 +14,6 @@ block content
     });
     
     
-   script(src="./js/map.js")
-   script(src="./js/new2.js").
-    addMarker(new L.LatLng(55.879307,-4.290365), {icon: "\ue070", color: "#ff0000"});
-    addMarker(new L.LatLng(55.878844,-4.28909), {icon: "\ue025", color: "#00ff00"});
-    addMarker(new L.LatLng(55.878043,-4.289701), {icon: "\u2605", color: "#0000ff"});
-    addMarker(new L.LatLng(55.879608,-4.292264), {icon: "\ue002", color: "#8B668B"}); // print only display
-    addMarker(new L.LatLng(55.879289,-4.289695), {icon: "\uf030", color: "#990000", iconFont: 'awesome'}); //camera
-    addMarker(new L.LatLng(55.878859,-4.288494), {icon: "\uf06e", color: "#009900", iconFont: 'awesome'}); // eye open
-    addMarker(new L.LatLng(55.878073,-4.289277), {icon: "\uf005", color: "#000099", iconFont: 'awesome'}); // star
-    addMarker(new L.LatLng(55.87962,-4.291504), {icon: "\uf041", color: "#4F2F4F", iconFont: 'awesome'}); // pin only
-    map.addLayer(drawnItems);
-    map.on("viewreset", function() {
-            var zoom = map.getZoom(),
-                size = computeSizeFromZoom();
-            //console.log("resize, zoom " + zoom + " size " + size);
-            for (var i = 0; i < markers.length; i++) {
-                markers[i].setFontSize(size);
-            }
-       });
-    function computeSizeFromZoom() {
-            var max = map.getMaxZoom(),
-                zoom = map.getZoom(),
-                diff = max - zoom,
-                table = [2, 1, 0.5];
-            return  (diff < table.length) ? table[diff] : 0.5;
-        }
-        function addMarker(latLng, opts) {
-            var icon = opts.icon || "\ue002",
-                color = opts.color || "blue",
-                font = opts.iconFont || "iconic",
-                sz = computeSizeFromZoom();
-                marker = new cilogi.L.Marker(latLng, {
-                    fontIconSize: sz,
-                    fontIconName: icon,
-                    fontIconColor: color,
-                    fontIconFont: font,
-                    opacity: 1
-                });
-            drawnItems.addLayer(marker);
-            markers.push(marker);
-        }
+   script(src="./js/fullmap.js")
+   script(src="/js/bouncemarker.js")
+   script(src="./js/newConnection2.js")

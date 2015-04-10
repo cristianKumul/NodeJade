@@ -253,6 +253,24 @@ footer {
     color:#eeeeee;
 }
 
+
+
+#canvas {
+
+    opacity: 0.3;
+
+
+    -webkit-transition: opacity 0.1s; /* Safari and Chrome */
+       -moz-transition: opacity 0.1s; /* Firefox 4 */
+        -ms-transition: opacity 0.1s; /* MSIE */
+         -o-transition: opacity 0.1s; /* Opera */
+            transition: opacity 0.1s;
+    
+}
+#canvas:hover{
+  
+    opacity: 1;
+}
 /*barra*/
 
 
@@ -264,7 +282,7 @@ nav.navbar.navbar-barra {
 nav.navbar.navbar-barra a{
   margin: 30% 0 0 0;
   padding: 0;
-  
+
 }
 
 nav.navbar.navbar-barra span {

@@ -31,3 +31,12 @@ myControl = L.control({position: 'topright'});
 	            return this._div;
 	}
 myControl.addTo(map);
+
+
+grafControl = L.control({position: 'bottomleft'});
+	grafControl.onAdd = function(map) {
+	            grafControl._div = L.DomUtil.create('div', 'grafControl');
+	            this.queue = [];
+	            return this._div;
+	}
+grafControl.addTo(map);
