@@ -48,8 +48,9 @@ socket.on('load:coords', function(data) {
 			map.fitBounds(group.getBounds(),{padding: [50, 50],maxZoom:15});
 			//console.log( Object.keys(markers).length);
 		}
-
-		uptateGraphD(data);
+		ventasCanal[data.canal-1]+=1;
+		ventasServicio[data.canal-1][data.tipoServicio -1]+=1;
+		//uptateGraphD(data);
 
 	}
 	
@@ -98,16 +99,22 @@ function uptateGraphD(data){
 	switch(data.canal) {
 
 		case 1:
-			ventasCanal[0]+=1;
+			
+			myDoughnutChart.segments[0].value +=1;
+			
 			break;
 		case 2:
-			ventasCanal[1]+=1;
+			
+			myDoughnutChart.segments[1].value+=1;
+			
 			break;
 		case 3:
-			ventasCanal[2]+=1;
+			
+			myDoughnutChart.segments[2].value+=1;
 			break;
 
 	}
+	myDoughnutChart.update();
 }
 function setMarker(data) {
 	//for (var i = 0; i < data.coords.length; i++) {
