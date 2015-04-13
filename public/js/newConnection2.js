@@ -50,7 +50,7 @@ socket.on('load:coords', function(data) {
 		}
 		ventasCanal[data.canal-1]+=1;
 		ventasServicio[data.canal-1][data.tipoServicio -1]+=1;
-		//uptateGraphD(data);
+		updateBoth(checked, data);
 
 	}
 	
@@ -74,6 +74,22 @@ socket.on('load:coords', function(data) {
 
 	
 });
+
+function updateBoth(option, data){
+	console.log("opcion: " + data);
+
+	if(option == 2){
+		grafica.datasets[data.canal - 1].points[data.tipoServicio - 1].value += 1;
+		grafica.update();
+	} 
+
+	if(option == 3){
+		grafica.segments[data.canal-1].value += 1;
+		grafica.update();
+	}
+
+	
+}
 
 function uptateGraph(data){
 

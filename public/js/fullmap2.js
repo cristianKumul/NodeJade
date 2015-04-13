@@ -1,4 +1,5 @@
 var map;
+var checked;
 var ventasCanal=[0,0,0];
 var ventasServicio=[[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0]];
 var tinyIcon = L.Icon.extend({
@@ -49,7 +50,7 @@ Control.addTo(map);
 
 	
  $('input[type=radio][name=opt]').change(function () {
-            var checked = $("input[name='opt']:checked").val();
+            checked = $("input[name='opt']:checked").val();
             switch(checked){
 
             	case '1':
@@ -113,7 +114,7 @@ function crearGraficaRadar(){
   ]
  };
  
- myRadar = new Chart(document.getElementById("canvas").getContext("2d")).Radar(radarChartData, {
+ grafica = new Chart(document.getElementById("canvas").getContext("2d")).Radar(radarChartData, {
   responsive: false
  });
 }
@@ -141,81 +142,5 @@ function crearGraficaCircular(){
   ];
 
 
- myDoughnutChart = new Chart(document.getElementById("canvas").getContext("2d")).Doughnut(data);
+ grafica = new Chart(document.getElementById("canvas").getContext("2d")).Doughnut(data);
 }
-function crearGrafica(){
-		var data = [
-			    {
-			        value: 1,
-			        color:"#f47a9f ",
-			        highlight: "#f04276",
-			        label: "Marcas Propias"
-			    },
-			    {
-			        value: 1,
-			        color: "#4c728c",
-			        highlight: "#00365B",
-			        label: "Terceros"
-			    },
-			    {
-			        value: 1,
-			        color: "#4ca55b",
-			        highlight: "#007F16",
-			        label: "Corporativo"
-			    }
-			];
-		/*var radarChartData = {
-		labels: ['Hotel','Transportación','Vuelo','Tour','Auto','Paquetes','Autobus','Crucero','Circuito'],
-		datasets: [
-			{
-				label: "Marcas Propias",
-				fillColor: "rgba(240,66,118,0.7)",
-				strokeColor: "rgba(240,66,118,0.7)",
-				pointColor: "rgba(240,66,118,0.7)",
-				pointStrokeColor: "#fff",
-				pointHighlightFill: "#fff",
-				pointHighlightStroke: "rgba(240,66,118,0.7)",
-				data: [0,0,0,0,0,0,0,0,0]
-			},
-			{
-				label: "Terceros",
-				fillColor: "rgba(0,54,91,0.7)",
-				strokeColor: "rgba(0,54,91,0.7)",
-				pointColor: "rgba(0,54,91,0.7)",
-				pointStrokeColor: "#fff",
-				pointHighlightFill: "#fff",
-				pointHighlightStroke: "rgba(0,54,91,0.7)",
-				data: [0,0,0,0,0,0,0,0,0]
-			},
-
-			{
-				label: "Corporativo",
-				fillColor: "rgba(0,127,22,0.7)",
-				strokeColor: "rgba(0,127,22,0.7)",
-				pointColor: "rgba(0,127,22,0.7)",
-				pointStrokeColor: "#fff",
-				pointHighlightFill: "#fff",
-				pointHighlightStroke: "rgba(0,127,22,0.7)",
-				data: [0,0,0,0,0,0,0,0,0]
-			}
-
-		]
-	};*/
-	div = '<div  style="width:100%"><div><p>Hoola</p></div><canvas class="foo" id="canvas" height="200%" width="200%"></canvas></div>';
-	
-
-
-
-	grafControl._div.innerHTML = div;
-	
-
-
-		/*myRadar = new Chart(document.getElementById("canvas").getContext("2d")).Radar(radarChartData, {
-			responsive: false
-		});*/
-		//myDoughnutChart = new Chart(document.getElementById("canvas").getContext("2d")).Doughnut(data);
-		//myDoughnutChart.segments[0].value = 0;
-		//myDoughnutChart.segments[1].value = 0;
-		//myDoughnutChart.segments[2].value = 0;
-
-	}
