@@ -2,6 +2,7 @@ var connects = {};
 var markers = {};
 var coordinates={};
 var listMarker=[];
+var intervalMarker = {};
 var markerId;
 var tiempoMarcador=900000;
 
@@ -67,6 +68,7 @@ socket.on('load:coords', function(data) {
 	}*/
 	connects[data.id] = data;
 	connects[data.id].updated = $.now();
+	connects[data.id].timeout = true;
 
 
 	
@@ -170,16 +172,42 @@ function bar(data){
 }
 
 
+function intervalTrigger(marker){
+ return window.setInterval(function() {
+  try {opacity = marker.options.opacity;
+  marker.setOpacity( opacity- 0.01);}catch(e){}
+ },10);
+
+
+}
+
 // elimina cada n tiempo el marcador que cumpla la condici
 setInterval(function() {
-	for (var ident in connects){
-		if ($.now() - connects[ident].updated > tiempoMarcador) {
-			console.log(markers[ident]);
-			delete connects[ident];
-			delete coordinates[markers[ident].getLatLng()];
-			map.removeLayer(markers[ident]);
-			delete markers[ident];
+ for (var ident in connects){
+  if ($.now() - connects[ident].updated > (tiempoMarcador-1000)) {
+     if (connects[ident].timeout){
+       connects[ident].timeout = false;
+       intervalMarker[ident] = intervalTrigger(markers[ident]);
+       /*setInterval(function() {
+        opacity = markers[ident].options.opacity;
+        markers[ident].setOpacity( opacity- 0.05);
+       },200);*/
 
-		}
-	}
+     }
+     
+     console.log("Entrando............ "+markers[ident].options.opacity);
+     
+     
+
+  }
+  if ($.now() - connects[ident].updated > tiempoMarcador) {
+   console.log(markers[ident]);
+   delete connects[ident];
+   delete coordinates[markers[ident].getLatLng()];
+   map.removeLayer(markers[ident]);
+   delete markers[ident];
+   window.clearInterval(intervalMarker[ident]);
+
+  }
+ }
 }, 1000);
