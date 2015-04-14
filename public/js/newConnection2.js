@@ -1,5 +1,6 @@
 var connects = {};
 var markers = {};
+var intervalMarker ={};
 var coordinates={};
 var listMarker=[];
 var markerId;
@@ -70,13 +71,14 @@ socket.on('load:coords', function(data) {
 	}*/
 	connects[data.id] = data;
 	connects[data.id].updated = $.now();
+	connects[data.id].timeout = true;
 
 
 	
 });
 
 function updateBoth(option, data){
-	console.log("opcion: " + data);
+	//console.log("opcion: " + data);
 
 	if(option == 2){
 		grafica.datasets[data.canal - 1].points[data.tipoServicio - 1].value += 1;
@@ -140,8 +142,7 @@ function setMarker(data) {
 								{ bounceOnAdd: true, bounceOnAddOptions: {duration: 500, height: 50},
 								 icon: L.AwesomeMarkers.icon({icon: icons[data.tipoServicio -1], prefix: 'icon', markerColor: canal[data.canal -1], spin:false}) }).addTo(map);	
 
-
-		
+			
 			coordinates[marker.getLatLng()] = data.id;
 
 			
@@ -155,14 +156,14 @@ function setMarker(data) {
 				console.log("Existe");
 				var randomlat = (Math.random() * (0.001 - (-0.001)) + (-0.001));
 				var randomlon = (Math.random() * (0.001 - (-0.001)) + (-0.001));
-				console.log(randomlat);
-				console.log(randomlon);
+				//console.log(randomlat);
+				//console.log(randomlon);
 				newCoord = new L.LatLng(data.destino.lat+randomlat,data.destino.lon+randomlon);
 				marker.setLatLng(newCoord);
 				marker.update();
 				//data.destino.lat= data.destino.lat+randomlat;
 				//data.destino.lon=data.destino.lon+randomlon;
-				console.log(marker.getLatLng());
+				//console.log(marker.getLatLng());
 				delete connects[data.id];
 				delete coordinates[markers[data.id].getLatLng()];
 				map.removeLayer(markers[data.id]);
@@ -231,16 +232,41 @@ function bar(data){
     	
 }
 
+function intervalTrigger(marker){
+	return window.setInterval(function() {
+		try {opacity = marker.options.opacity;
+		marker.setOpacity( opacity- 0.01);}catch(e){}
+	},10);
+
+
+}
 
 // elimina cada n tiempo el marcador que cumpla la condici
 setInterval(function() {
 	for (var ident in connects){
+		if ($.now() - connects[ident].updated > (tiempoMarcador-1000)) {
+					if (connects[ident].timeout){
+							connects[ident].timeout = false;
+							intervalMarker[ident] = intervalTrigger(markers[ident]);
+							/*setInterval(function() {
+								opacity = markers[ident].options.opacity;
+								markers[ident].setOpacity( opacity- 0.05);
+							},200);*/
+
+					}
+					
+					console.log("Entrando............ "+markers[ident].options.opacity);
+					
+					
+
+		}
 		if ($.now() - connects[ident].updated > tiempoMarcador) {
 			console.log(markers[ident]);
 			delete connects[ident];
 			delete coordinates[markers[ident].getLatLng()];
 			map.removeLayer(markers[ident]);
 			delete markers[ident];
+			window.clearInterval(intervalMarker[ident]);
 
 		}
 	}
