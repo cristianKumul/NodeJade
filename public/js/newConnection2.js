@@ -153,7 +153,7 @@ function setMarker(data) {
 		map.addLayer(markers[data.id]);
 
 		if(marker.getLatLng() in coordinates){
-				console.log("Existe");
+				//console.log("Existe");
 				var randomlat = (Math.random() * (0.001 - (-0.001)) + (-0.001));
 				var randomlon = (Math.random() * (0.001 - (-0.001)) + (-0.001));
 				//console.log(randomlat);
@@ -200,7 +200,7 @@ function setMarker(data) {
    					 foo = [latlngs[i-1],latlngs[i]]
    					 var polyline = L.polyline(foo, {color: colorCanal[data.canal -1]});
    					 circuito.addLayer(polyline);
-   					 console.log(layer._latlng);
+   					 //console.log(layer._latlng);
    					 i=i+1;
 				});
 			markers[data.id] = circuito;
@@ -255,13 +255,13 @@ setInterval(function() {
 
 					}
 					
-					console.log("Entrando............ "+markers[ident].options.opacity);
+					//console.log("Entrando............ "+markers[ident].options.opacity);
 					
 					
 
 		}
 		if ($.now() - connects[ident].updated > tiempoMarcador) {
-			console.log(markers[ident]);
+			//console.log(markers[ident]);
 			delete connects[ident];
 			delete coordinates[markers[ident].getLatLng()];
 			map.removeLayer(markers[ident]);

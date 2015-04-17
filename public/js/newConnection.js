@@ -19,23 +19,10 @@ socket.on('config:client', function(data) {
 });
 socket.on('load:coords', function(data) {
 	var n = Object.keys(markers).length;
-	//alert(n);
-	markerId = data.id;//Math.random().toString(16).substring(2,15);
+
+	markerId = data.id;
 	if (!(data.id in connects) ) {
 		
-		/*var currentCoord =new  L.LatLng(data.destino.lat,data.destino.lon);//'LatLng('+data.destino.lat+', '+data.destino.lon+')';//new  L.LatLng(data.destino.lat,data.destino.lon);
-		
-		if(currentCoord in coordinates){
-				console.log("Existe");
-				var randomlat = (Math.random() * (0.001 - (-0.001)) + (-0.001));
-				var randomlon = (Math.random() * (0.001 - (-0.001)) + (-0.001));
-				console.log(randomlat);
-				console.log(randomlon);
-				data.destino.lat= data.destino.lat+randomlat;
-				data.destino.lon=data.destino.lon+randomlon;
-				console.log(coordinates);
-				
-			}*/
 		
 		setMarker(data);
 		
@@ -49,26 +36,11 @@ socket.on('load:coords', function(data) {
 			map.fitBounds(group.getBounds(),{padding: [50, 50],maxZoom:15});
 			//console.log( Object.keys(markers).length);
 		}
-		//ventasCanal[data.canal-1]+=1;
-		//ventasServicio[data.canal-1][data.tipoServicio -1]+=1;
-		//updateBoth(checked, data);
+		
 
 	}
 	
-	/*else{
-		var lastKey;
-		for(var key in markers){
-		    if(markers.hasOwnProperty(key)){
-		       lastKey = key;
-		       break;
-		    }
-		}
-		//lastKey = Object.keys(markers).reverse()[markers.length];
-		map.removeLayer(markers[lastKey]);
-		delete markers[lastKey];
-		//alert(lastKey);
-		setMarker(data);
-	}*/
+
 	connects[data.id] = data;
 	connects[data.id].updated = $.now();
 	connects[data.id].timeout = true;
@@ -78,36 +50,32 @@ socket.on('load:coords', function(data) {
 
 
 function setMarker(data) {
-	//for (var i = 0; i < data.coords.length; i++) {
+	
 		if(data.tipoServicio!=9){
 			
 			var marker = L.marker([data.destino.lat, data.destino.lon],
 								{ bounceOnAdd: true, bounceOnAddOptions: {duration: 500, height: 50},
 								 icon: L.AwesomeMarkers.icon({icon: icons[data.tipoServicio -1], prefix: 'icon', markerColor: canal[data.canal -1], spin:false}) }).addTo(map);	
 
-
 		
 			coordinates[marker.getLatLng()] = data.id;
 
 			
-		//var marker = L.marker([data.coords[0].olat, data.coords[0].olng], { icon: yellowIcon}).addTo(map);
 		marker.bindPopup('<p>¡Una venta aquí!<br>Usuario:<b>'+data.tipoServicio+'</b><br>Destino:['+data.destino.lat+','+data.destino.lon+']<br>' + '<a href="#" id="showRoute" data-coords=\'{"olat":"'+data.destino.lon+'","olng":"'+data.destino.lon+'","dlat":"'+data.destino.lon+'","dlng":"'+data.destino.lon+'"}\' onclick="drawPolyline();return false;" >Ver ruta</a></p> ');
-		//
-		markers[data.id] = marker;//tmp={olat:'+data.coords[0].olat+',olng:'+data.coords[0].olng+',dlat:'+data.coords[0].dlat+',dlng:'+data.coords[0].dlng+'}
+	
+		markers[data.id] = marker;
 		map.addLayer(markers[data.id]);
 
 		if(marker.getLatLng() in coordinates){
-				console.log("Existe");
+				//console.log("Existe");
 				var randomlat = (Math.random() * (0.001 - (-0.001)) + (-0.001));
 				var randomlon = (Math.random() * (0.001 - (-0.001)) + (-0.001));
-				console.log(randomlat);
-				console.log(randomlon);
+				//console.log(randomlat);
+				//console.log(randomlon);
 				newCoord = new L.LatLng(data.destino.lat+randomlat,data.destino.lon+randomlon);
 				marker.setLatLng(newCoord);
 				marker.update();
-				//data.destino.lat= data.destino.lat+randomlat;
-				//data.destino.lon=data.destino.lon+randomlon;
-				console.log(marker.getLatLng());
+				//console.log(marker.getLatLng());
 				delete connects[data.id];
 				delete coordinates[markers[data.id].getLatLng()];
 				map.removeLayer(markers[data.id]);
@@ -144,19 +112,18 @@ function setMarker(data) {
    					 foo = [latlngs[i-1],latlngs[i]]
    					 var polyline = L.polyline(foo, {color: colorCanal[data.canal -1]});
    					 circuito.addLayer(polyline);
-   					 console.log(layer._latlng);
+   					 //console.log(layer._latlng);
    					 i=i+1;
 				});
 			markers[data.id] = circuito;
 			map.addLayer(markers[data.id]);
-			//alert("Circuito");
+			
 		}
-		//var destmarker = L.marker([data.coords[0].dlat, data.coords[0].dlng], { icon: redIcon}).addTo(map);
-	//}
+		
 }
 
 function bar(data){
-	//console.log(data.options.iconUrl);
+	
 	if(myControl.queue.length > 9){
     		myControl.queue.shift();
     	}
@@ -168,7 +135,7 @@ function bar(data){
     	}
     	tabla += '</ul></div></div></nav></div>';
 
-    	//alert(tabla);
+    	
     	myControl._div.innerHTML = tabla;
     	
 }
@@ -191,20 +158,16 @@ setInterval(function() {
 					if (connects[ident].timeout){
 							connects[ident].timeout = false;
 							intervalMarker[ident] = intervalTrigger(markers[ident]);
-							/*setInterval(function() {
-								opacity = markers[ident].options.opacity;
-								markers[ident].setOpacity( opacity- 0.05);
-							},200);*/
 
 					}
 					
-					console.log("Entrando............ "+markers[ident].options.opacity);
+					//console.log("Entrando............ "+markers[ident].options.opacity);
 					
 					
 
 		}
 		if ($.now() - connects[ident].updated > tiempoMarcador) {
-			console.log(markers[ident]);
+			//console.log(markers[ident]);
 			delete connects[ident];
 			delete coordinates[markers[ident].getLatLng()];
 			map.removeLayer(markers[ident]);

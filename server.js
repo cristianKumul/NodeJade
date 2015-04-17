@@ -4,7 +4,7 @@ var express = require('express')
   //, http = require('http').createServer(app)//Server(app)
  //, stylus = require('stylus')
  // , nib = require('nib')
- , io = require('socket.io').listen(app.listen(process.env.PORT || 3000));//require('socket.io')(http)
+ , io = require('socket.io').listen(app.listen(process.env.PORT || 8080));//require('socket.io')(http)
 
 
 

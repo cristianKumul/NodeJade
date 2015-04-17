@@ -6,16 +6,15 @@ html
   block head  
       title #{title} - PriceTravel
       
-      //link(rel='stylesheet', href='/css/map.css')
-      //link(rel='stylesheet', href='/css/map.css')
+   
       link(rel='stylesheet', href='/stylesheets/style.css')
       link(href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css", rel="stylesheet")
       link(rel='stylesheet', href="http://cdn.leafletjs.com/leaflet-0.7/leaflet.css")
-      link(rel='stylesheet', href="/stylesheets/custom-leaflet.css")
+      //link(rel='stylesheet', href="/stylesheets/custom-leaflet.css")
       link(rel='stylesheet', href="/stylesheets/font-icons.css")
       link(rel='stylesheet', href="/stylesheets/leaflet.awesome-markers.css")
-      link(rel='stylesheet', href="http://code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css")
-      link(rel='stylesheet', href="http://netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css")
+      //link(rel='stylesheet', href="http://code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css")
+      //link(rel='stylesheet', href="http://netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css")
       
 
       script(src="/socket.io/socket.io.js")
@@ -31,11 +30,10 @@ html
        
     .container
       script(src="https://code.jquery.com/jquery-2.1.3.min.js")
-      //script(src="//code.jquery.com/ui/1.11.4/jquery-ui.js")
       script(src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js")   
       script(src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.5/socket.io.js")
       script(src="http://cdn.leafletjs.com/leaflet-0.7/leaflet.js")
-      script(src="/js/lib/leaflet.textpath.js")
+      //script(src="/js/lib/leaflet.textpath.js")
       script(src="/js/lib/leaflet.awesome-markers.js") 
       script(src="/js/lib/Chart.js")
       script(src="/js/lib/bouncemarker.js")
@@ -49,20 +47,13 @@ html
                           span.icon-bar
                           span.icon-bar
                           span.icon-bar
-                      //a(class='navbar-brand',href='/') PriceTravel
-                        #bs-example-navbar-collapse-1(class='collapse navbar-collapse')
+                      
                   ul(class='nav navbar-nav')
                       li  
                           if foo == 'Index'
                              a(class='navbar-brand',href='/#') HOME
                           else
                              a(href='/#') home
-                       
-                      //li
-                          if foo == 'Send Data'
-                            a(class='navbar-brand',href='/send') SEND DATA
-                          else
-                            a(href='/send') send data
                       li
                           if foo == 'Mapa'
                             a(class='navbar-brand',href='/map') MAP
@@ -83,7 +74,5 @@ html
       .main-content
         block content
 
-      //.sidebar
-        block sidebar
     footer
       p PriceTravel 
