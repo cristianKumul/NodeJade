@@ -36,9 +36,9 @@ html
       script(src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.5/socket.io.js")
       script(src="http://cdn.leafletjs.com/leaflet-0.7/leaflet.js")
       script(src="/js/lib/leaflet.textpath.js")
-      script(src="/js/leaflet.awesome-markers.js") 
+      script(src="/js/lib/leaflet.awesome-markers.js") 
       script(src="/js/lib/Chart.js")
-      //script(src="/js/bouncemarker.js")
+      script(src="/js/lib/bouncemarker.js")
       block navBar
       - var foo =  title   
         nav(class='navbar navbar-default', role='navigation')
@@ -78,23 +78,7 @@ html
                             a(class='navbar-brand',href='/send') CONFIGURACIÓN
                           else
                             a(href='/send') conf
-                      //li
-                          if foo == 'Mapa1'
-                            a(class='navbar-brand',href='/map1') MAPA1
-                          else
-                            a(href='/map1') mapa1
                       
-      //#navbar-inverse.collapse.navbar-collapse
-          ul.nav.navbar-nav
-              li.active: a( href="/") Home
-              li: a( href="/send" ) Send
-              
-              li.dropdown
-                  a.dropdown-toggle( href="#", data-toggle="dropdown", role="button", aria-expanded="false" ) Map
-                      span.caret
-                  ul.dropdown-menu( role="menu" )
-                      li: a( href="#" ) Origins
-                      li: a( href="#" ) All transactions
                       
       .main-content
         block content

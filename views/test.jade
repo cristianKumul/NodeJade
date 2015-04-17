@@ -34,32 +34,7 @@ block content
 			var userId = Math.random().toString(16).substring(2,15);
 
 			var history = reservas;
-			
-			
-			/*var xServicio = Math.floor((Math.random() * 9) + 1);
-			if (xServicio!=9){
-			   destinoRand = normalCoord[Math.floor((Math.random() * normalCoord.length-2) + 1)];
-			}
-			else{
-			   destinoRand = circuitoCoord[Math.floor((Math.random() * 2) )];
-			   console.log("circuitoCoord: "+destinoRand);
-			}
-
-			var canalRand = Math.floor((Math.random() * 3) + 1);
-			// mark user's position
-			
-			sentData = {
-						id:userId,
-						tipoServicio: xServicio,
-						destino: destinoRand,
-						canal:canalRand,
-						informacion:{
-							 titulo:"Prueba "+"Canal "+ canalRand,
-							 ciudadOrigenVenta: "Cancún",
-							 descripcion:"descripcion prueba"
-				 		}	 
-						
-					};*/
+		
 			if ( index == history.length){
 				index = 0;
 				
@@ -74,24 +49,10 @@ block content
 			socket.emit('intervalCoords', data);
 			//console.log(sentData);
 			//console.log(tiempoEnvio);
-			console.log(data);
+			//console.log(data);
 			clearInterval(interval);
 			interval = setInterval(getData,tiempoEnvio);
 			index+=1;
 		};
 		
 		interval = setInterval(getData,tiempoEnvio);	
-		/*setInterval(function(){
-			
-
-			var sentData = getData();
-			socket.emit('intervalCoords', sentData);
-		
-			console.log(sentData);
-			console.log(tiempoEnvio);
-		},tiempoEnvio);
-		*/
-
-		//}
-		//$("#btn").click( interval=enviar());
-		//$("#btnStop").click(clearInterval(interval))
