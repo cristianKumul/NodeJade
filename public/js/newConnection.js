@@ -1,5 +1,6 @@
 var connects = {};
 var markers = {};
+var intervalMarker ={};
 var coordinates={};
 var listMarker=[];
 var markerId;
@@ -48,6 +49,9 @@ socket.on('load:coords', function(data) {
 			map.fitBounds(group.getBounds(),{padding: [50, 50],maxZoom:15});
 			//console.log( Object.keys(markers).length);
 		}
+		//ventasCanal[data.canal-1]+=1;
+		//ventasServicio[data.canal-1][data.tipoServicio -1]+=1;
+		//updateBoth(checked, data);
 
 	}
 	
@@ -67,7 +71,7 @@ socket.on('load:coords', function(data) {
 	}*/
 	connects[data.id] = data;
 	connects[data.id].updated = $.now();
-
+	connects[data.id].timeout = true;
 
 	
 });
@@ -171,14 +175,41 @@ function bar(data){
 
 
 // elimina cada n tiempo el marcador que cumpla la condici
+function intervalTrigger(marker){
+	return window.setInterval(function() {
+		try {opacity = marker.options.opacity;
+		marker.setOpacity( opacity- 0.01);}catch(e){}
+	},10);
+
+
+}
+
+// elimina cada n tiempo el marcador que cumpla la condici
 setInterval(function() {
 	for (var ident in connects){
+		if ($.now() - connects[ident].updated > (tiempoMarcador-1000)) {
+					if (connects[ident].timeout){
+							connects[ident].timeout = false;
+							intervalMarker[ident] = intervalTrigger(markers[ident]);
+							/*setInterval(function() {
+								opacity = markers[ident].options.opacity;
+								markers[ident].setOpacity( opacity- 0.05);
+							},200);*/
+
+					}
+					
+					console.log("Entrando............ "+markers[ident].options.opacity);
+					
+					
+
+		}
 		if ($.now() - connects[ident].updated > tiempoMarcador) {
 			console.log(markers[ident]);
 			delete connects[ident];
 			delete coordinates[markers[ident].getLatLng()];
 			map.removeLayer(markers[ident]);
 			delete markers[ident];
+			window.clearInterval(intervalMarker[ident]);
 
 		}
 	}

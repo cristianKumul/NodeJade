@@ -77,7 +77,8 @@ function ocultarGraficas(){
 
 function crearGraficaRadar(){
   var radarChartData = {
-  labels: ['Hotel','Transportación','Vuelo','Tour','Auto','Paquetes','Autobus','Crucero','Circuito'],
+  //labels: ['Hotel','Transportación','Vuelo','Tour','Auto','Paquetes','Autobus','Crucero','Circuito'],
+  labels: ['Hotel','Vuelo','Paquetes','Autobus','Auto','Transportación','Tour','Crucero','Circuito'],
   datasets: [
    {
     label: "Marcas Propias",

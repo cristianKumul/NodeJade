@@ -15,6 +15,15 @@ block content
 		var interval,tiempoEnvio;
 		var destinoRand;
 		var index = 0;
+		var totalServicios ={};
+		for(var i in reservas){
+			if(!(reservas[i].tipoServicio.toString() in totalServicios)){
+				totalServicios[reservas[i].tipoServicio.toString()]=1; 
+			}
+			totalServicios[reservas[i].tipoServicio.toString()]+=1; 
+
+		}
+		console.log(totalServicios);
 		tiempoEnvio=36000,interval;
 		socket.on('config:client', function(data) {
 
