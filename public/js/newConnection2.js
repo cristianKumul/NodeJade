@@ -20,6 +20,7 @@ socket.on('config:client', function(data) {
 socket.on('load:coords', function(data) {
 	var n = Object.keys(markers).length;
 	//alert(n);
+
 	markerId = data.id;//Math.random().toString(16).substring(2,15);
 	if (!(data.id in connects) ) {
 		
@@ -73,7 +74,7 @@ socket.on('load:coords', function(data) {
 	connects[data.id].updated = $.now();
 	connects[data.id].timeout = true;
 
-
+	console.log("Número de markers: "+ Object.keys(connects).length);
 	
 });
 

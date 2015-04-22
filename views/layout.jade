@@ -15,7 +15,7 @@ html
       link(rel='stylesheet', href="/stylesheets/leaflet.awesome-markers.css")
       //link(rel='stylesheet', href="http://code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css")
       //link(rel='stylesheet', href="http://netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css")
-      
+      //link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/css/materialize.min.css")
 
       script(src="/socket.io/socket.io.js")
         
@@ -37,6 +37,7 @@ html
       script(src="/js/lib/leaflet.awesome-markers.js") 
       script(src="/js/lib/Chart.js")
       script(src="/js/lib/bouncemarker.js")
+      //script(src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/js/materialize.min.js")
       block navBar
       - var foo =  title   
         nav(class='navbar navbar-default', role='navigation')
@@ -59,7 +60,7 @@ html
                             a(class='navbar-brand',href='/map') MAP
                           else
                             a(href='/map') map
-                      li
+                      //li
                           if foo == 'Test'
                             a(class='navbar-brand',href='/test') TEST
                           else

@@ -6,34 +6,34 @@ reservas = [
 	},
 	//repetido
 		{
-		tipoServicio: 2,
+		tipoServicio: 3,
 		destino: {lat: 19.436076, lon: -99.071908},
 		canal: 1
 	},
 		{
-		tipoServicio: 2,
+		tipoServicio: 3,
 		destino: {lat: 19.436076, lon: -99.071908},
 		canal: 1
 	},
 		{
-		tipoServicio: 2,
+		tipoServicio: 3,
 		destino: {lat: 19.436076, lon: -99.071908},
 		canal: 1
 	},
 		{
-		tipoServicio: 2,
+		tipoServicio: 3,
 		destino: {lat: 19.436076, lon: -99.071908},
 		canal: 1
 	},
 	//repetido
 	{
-		tipoServicio: 2,
+		tipoServicio: 3,
 		destino: {lat: 19.436076, lon: -99.071908},
 		canal: 1
 	},
 
 	{
-		tipoServicio: 2,
+		tipoServicio: 3,
 		destino: {lat: 19.436076, lon: -99.071908},
 		canal: 1
 	},
@@ -45,13 +45,13 @@ reservas = [
 	},
 
 	{
-		tipoServicio: 3,
+		tipoServicio: 2,
 		destino: {lat: 16.8565597, lon: -99.8618657},
 		canal:1
 	},
 
 	{
-		tipoServicio: 3,
+		tipoServicio: 2,
 		destino: {lat: 20.6996, lon: -87.026824},
 		canal: 1
 	},

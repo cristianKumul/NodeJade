@@ -68,7 +68,7 @@ Control.addTo(map);
             
         });
 //crearGrafica();
-div = '<div  style="width:100%"><canvas class="foo" id="canvas" height="350" width="350"></canvas></div>';
+div = '<div  style="width:100%"><canvas id="canvas"></canvas></div>';
 grafControl._div.innerHTML = div;
 
 function ocultarGraficas(){
