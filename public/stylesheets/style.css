@@ -293,6 +293,18 @@ canvas{
 }
 /*barra*/
 
+#configureIcon{
+
+  float:right;
+  top:0;
+}
+#configureIcon img{
+
+  float:right;
+  top:0;
+  padding-right: 0;
+  padding: 0;
+}
 
 nav.navbar.navbar-barra {
     background: none;
