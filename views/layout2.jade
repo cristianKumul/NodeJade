@@ -15,6 +15,10 @@ html
       //link(rel='stylesheet', href="/stylesheets/custom-leaflet.css")
       link(rel='stylesheet', href="/stylesheets/font-icons.css")
       link(rel='stylesheet', href="/stylesheets/leaflet.awesome-markers.css")
+      style.
+        a{
+          color:inherit;
+        }
       //link(rel='stylesheet', href="http://code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css")
       //link(rel='stylesheet', href="http://netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css")
      
@@ -28,11 +32,16 @@ html
   body
     
       header
+        ul(class="nav navbar-nav navbar-right")
+          li
+            a(href="/send" target="_blank")
+              i(class="glyphicon glyphicon-wrench")
         h1  
         //a(href="#")
         
-        #configureIcon
-          
+        ul()
+        //#configureIcon
+            ul
               i(class="ion-gear-b" id="icon-config" onclick="openWin();return false;")
         #imgHeader
 
