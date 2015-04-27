@@ -239,8 +239,12 @@ footer {
 
 }
 #imgHeader{
-  height: auto;
-  width: 10%;
+  height: 32px;
+  width: 190px;
+}
+#imgHeader > img{
+   width:100%;
+   height: 100%;;
 }
 .navbar .navbar-collapse {
   text-align: center;
@@ -294,17 +298,15 @@ canvas{
 /*barra*/
 
 #configureIcon{
+  font-size: 200%;
+  position: fixed;
+    top: 2.5%;
+    right: 5%;
+  /*float:right;
+  */
 
-  float:right;
-  top:0;
 }
-#configureIcon img{
 
-  float:right;
-  top:0;
-  padding-right: 0;
-  padding: 0;
-}
 
 nav.navbar.navbar-barra {
     background: none;
