@@ -365,7 +365,33 @@ nav.navbar.navbar-barra .canal-corporativo{
 }
 /*--------------------------*/
 
+/*========== popup leaflet ==============*/
+.custom-popup .leaflet-popup-content-wrapper {
+  background:#2c3e50;
+   opacity: 0.4;
+  color:#fff;
+  font-size:16px;
+  line-height:24px;
+  }
+.custom-popup .leaflet-popup-content-wrapper a {
+   opacity: 0.4;
+  color:rgba(255,255,255,0.5);
+  }
+.custom-popup .leaflet-popup-tip-container{
+  width:30px;
+  height:15px;
+  }
+.custom-popup .leaflet-popup-tip {
 
+   opacity: 0.4;
+  background:#2c3e50;
+  border-left:0 solid transparent;
+  border-right:0 solid transparent;
+  border-top:0 solid transparent;
+  
+  }
+
+/*=========================================*/
 
 
 
@@ -414,3 +440,9 @@ nav.navbar.navbar-barra .canal-corporativo{
 .home-logos-copa{background-position:0 -1804px}
 
 #airl  span.home-logos-sprite{display:inline-block;text-align:center}
+
+div[id^="ekkoLightbox-"]{
+  top:25%;
+  /*right:50%;*/
+  outline: none;
+}

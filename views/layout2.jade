@@ -5,12 +5,13 @@ html
   head
   block head  
       title #{title} - PriceTravel
-      meta(name="viewport",content="width=device-width, initial-scale=1.0")
+      
       //link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/css/materialize.min.css")
       link(rel='stylesheet', href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css")
 
       link(rel='stylesheet', href='/stylesheets/style.css')
-      link(href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css", rel="stylesheet")
+      link(href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css", rel="stylesheet")
+      link(rel='stylesheet', href="//cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/3.3.0/ekko-lightbox.min.css")
       link(rel='stylesheet', href="http://cdn.leafletjs.com/leaflet-0.7/leaflet.css")
       //link(rel='stylesheet', href="/stylesheets/custom-leaflet.css")
       link(rel='stylesheet', href="/stylesheets/font-icons.css")
@@ -38,7 +39,7 @@ html
 
             a(href="/send" target="_blank")
               i(class="glyphicon glyphicon-wrench")
-        
+
         h1  
         //a(href="#")
         
@@ -53,7 +54,8 @@ html
 
       .container2
         script(src="https://code.jquery.com/jquery-2.1.3.min.js")
-        script(src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js")   
+        script(src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js")
+        script(src="http://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/3.3.0/ekko-lightbox.min.js")   
         script(src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.5/socket.io.js")
         script(src="http://cdn.leafletjs.com/leaflet-0.7/leaflet.js")
         //script(src="/js/lib/leaflet.textpath.js")
@@ -61,6 +63,33 @@ html
         script(src="/js/lib/Chart.js")
         script(src="/js/lib/bouncemarker.js")
         script(type='text/javascript').
+        
+          $(document).ready(function ($) {
+            $(document).delegate('*[data-toggle="lightbox"]:not([data-gallery="navigateTo"])', 'click', function(event) {
+                      event.preventDefault();
+                      return $(this).ekkoLightbox({
+                          onShown: function() {
+                              if (window.console) {
+                                  return console.log('Checking our the events huh?');
+                              }
+                          },
+              onNavigate: function(direction, itemIndex) {
+                              if (window.console) {
+                                  return console.log('Navigating '+direction+'. Current item: '+itemIndex);
+   
+                              }
+   
+              }
+                      });
+                  });
+           });
+          
+            function openWin(){
+              var win = window.open('/send', '_newtab');
+              win.focus();
+
+          }
+        //script(type='text/javascript').
           //$('#icon-config').click(function(){
           function openWin(){
               var win = window.open('/send', '_newtab');
