@@ -254,7 +254,6 @@ function intervalTrigger(marker){
 
 // elimina cada n tiempo el marcador que cumpla la condici
 setInterval(function() {
-<<<<<<< HEAD
 	for (var ident in connects){
 		if ($.now() - connects[ident].updated > (tiempoMarcador-1000)) {
 					if (connects[ident].timeout){
@@ -283,33 +282,3 @@ setInterval(function() {
 		}
 	}
 }, 1000);
-=======
- for (var ident in connects){
-  if ($.now() - connects[ident].updated > (tiempoMarcador-1000)) {
-     if (connects[ident].timeout){
-       connects[ident].timeout = false;
-       intervalMarker[ident] = intervalTrigger(markers[ident]);
-       /*setInterval(function() {
-        opacity = markers[ident].options.opacity;
-        markers[ident].setOpacity( opacity- 0.05);
-       },200);*/
-
-     }
-     
-     console.log("Entrando............ "+markers[ident].options.opacity);
-     
-     
-
-  }
-  if ($.now() - connects[ident].updated > tiempoMarcador) {
-   console.log(markers[ident]);
-   delete connects[ident];
-   delete coordinates[markers[ident].getLatLng()];
-   map.removeLayer(markers[ident]);
-   delete markers[ident];
-   window.clearInterval(intervalMarker[ident]);
-
-  }
- }
-}, 1000);
->>>>>>> e3a0d892a8b6a1544c4519295201ed6bf1785dc4
