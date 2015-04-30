@@ -9,13 +9,22 @@ block content
 		button.btn(id="btn") Enviar Datos
 		//button.btn(id="btnStop") Detener Envio
 		
-	script(src="./js/datos.js")
+	//script(src="./js/datos.js")
 	script(src="./data/reservas.js")
 	script(type='text/javascript').
 		var interval,tiempoEnvio;
 		var destinoRand;
 		var index = 0;
-		tiempoEnvio=5000,interval;
+		var totalServicios ={};
+		for(var i in reservas){
+			if(!(reservas[i].tipoServicio.toString() in totalServicios)){
+				totalServicios[reservas[i].tipoServicio.toString()]=1; 
+			}
+			totalServicios[reservas[i].tipoServicio.toString()]+=1; 
+
+		}
+		console.log(totalServicios);
+		tiempoEnvio=36000,interval;
 		socket.on('config:client', function(data) {
 
 			tiempoEnvio=data.ventas*1000;
@@ -25,32 +34,7 @@ block content
 			var userId = Math.random().toString(16).substring(2,15);
 
 			var history = reservas;
-			
-			
-			/*var xServicio = Math.floor((Math.random() * 9) + 1);
-			if (xServicio!=9){
-			   destinoRand = normalCoord[Math.floor((Math.random() * normalCoord.length-2) + 1)];
-			}
-			else{
-			   destinoRand = circuitoCoord[Math.floor((Math.random() * 2) )];
-			   console.log("circuitoCoord: "+destinoRand);
-			}
-
-			var canalRand = Math.floor((Math.random() * 3) + 1);
-			// mark user's position
-			
-			sentData = {
-						id:userId,
-						tipoServicio: xServicio,
-						destino: destinoRand,
-						canal:canalRand,
-						informacion:{
-							 titulo:"Prueba "+"Canal "+ canalRand,
-							 ciudadOrigenVenta: "Cancún",
-							 descripcion:"descripcion prueba"
-				 		}	 
-						
-					};*/
+		
 			if ( index == history.length){
 				index = 0;
 				
@@ -64,7 +48,7 @@ block content
 			data.id = userId;
 			socket.emit('intervalCoords', data);
 			//console.log(sentData);
-			//console.log(tiempoEnvio);
+			console.log(tiempoEnvio);
 			console.log(data);
 			clearInterval(interval);
 			interval = setInterval(getData,tiempoEnvio);
@@ -72,17 +56,3 @@ block content
 		};
 		
 		interval = setInterval(getData,tiempoEnvio);	
-		/*setInterval(function(){
-			
-
-			var sentData = getData();
-			socket.emit('intervalCoords', sentData);
-		
-			console.log(sentData);
-			console.log(tiempoEnvio);
-		},tiempoEnvio);
-		*/
-
-		//}
-		//$("#btn").click( interval=enviar());
-		//$("#btnStop").click(clearInterval(interval))

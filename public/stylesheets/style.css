@@ -15,7 +15,7 @@ span,
 applet,
 object,
 iframe,
-h1,
+h10,
 h2,
 h3,
 h4,
@@ -110,18 +110,31 @@ body {
 }
 header {
   font-family: 'Quicksand';
+  height:8%;
   padding: 5px 10px;
   color: #fff;
-  font-size: 25px;
-  text-align: center;
+  font-size: 15px;
+  text-align: left;
   top:0px;
+  
+
 /*
    * Note the use of the `main-color`
    * variable and the `darken` function
    */
-  background-color: #09c4a8;
+  background-color:#00365B;
   border-bottom: 1px solid #068976;
   text-shadow: 0px -1px 0px #068976;
+}
+
+.wrapper {
+    height:100vh;
+    display:flex;
+    // Direction of the items, can be row or column
+    flex-direction: column;
+}
+main{
+    flex:1;
 }
 .container {
   width: 500px;
@@ -179,18 +192,16 @@ footer {
 }
 #fullmap {
         position: fixed;
-        top: 0px;
-        left: 0%;
+        
         width: 100%;
-        height: 100%
+        height: 92%
 
     }
 #map {
         position: fixed;
-        top: 180px;
-        left: 0%;
+        
         width: 100%;
-        height: 80%
+        height: 92%
 
     }
     .help {
@@ -227,7 +238,14 @@ footer {
 
 
 }
-
+#imgHeader{
+  height: 32px;
+  width: 190px;
+}
+#imgHeader > img{
+   width:100%;
+   height: 100%;;
+}
 .navbar .navbar-collapse {
   text-align: center;
 }
@@ -236,7 +254,7 @@ footer {
   text-align: center;
 }
 .navbar-custom {
-    background-color:#04B486;
+    background-color:#00365B;
     color:#00FFBF;
     border-radius:0;
     position: relative;
@@ -246,12 +264,113 @@ footer {
     color:#fff;
 }
 .navbar-custom .navbar-nav > .active > a, .navbar-nav > .active > a:hover, .navbar-nav > .active > a:focus {
-    color: #00FFBF;
+    color: #00365B;
     background-color:#000000;
 }
 .navbar-custom .navbar-brand {
     color:#eeeeee;
 }
+
+
+canvas{
+  padding: 0;
+   height:250px; 
+  width:250px; 
+
+}
+#canvas {
+
+   
+    opacity: 0.3;
+
+
+    -webkit-transition: opacity 0.1s; /* Safari and Chrome */
+       -moz-transition: opacity 0.1s; /* Firefox 4 */
+        -ms-transition: opacity 0.1s; /* MSIE */
+         -o-transition: opacity 0.1s; /* Opera */
+            transition: opacity 0.1s;
+    
+}
+#canvas:hover{
+  
+    opacity: 1;
+}
+/*barra*/
+
+#configureIcon{
+  font-size: 200%;
+  position: fixed;
+    top: 2.5%;
+    right: 5%;
+  /*float:right;
+  */
+
+}
+
+
+nav.navbar.navbar-barra {
+    background: none;
+    border: none;
+}
+
+nav.navbar.navbar-barra a{
+  margin: 30% 0 0 0;
+  padding: 0;
+
+}
+
+nav.navbar.navbar-barra span {
+    padding: 10px;
+    background: #ddd;
+    border-radius: 50%;
+    border: 2px solid;
+    border-color: #999;
+    margin: 5px;
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+nav.navbar.navbar-barra span:hover{
+  box-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+nav.navbar.navbar-barra .canal-propias{
+  color: #fff;
+  background: -webkit-linear-gradient(left top, #ED1D5B, #F36892);
+  background: -o-linear-gradient(bottom right, #ED1D5B, #F36892);
+  background: -moz-linear-gradient(bottom right, #ED1D5B, #F36892);
+  background: linear-gradient(to bottom right, #ED1D5B, #F36892);
+  border-color: #ED1D5B;
+}
+
+nav.navbar.navbar-barra .canal-terceros{
+  color: #fff;
+  background: -webkit-linear-gradient(left top, #00253D, #00568F);
+  background: -o-linear-gradient(bottom right, #00253D, #00568F);
+  background: -moz-linear-gradient(bottom right, #00253D, #00568F);
+  background: linear-gradient(to bottom right, #00253D, #00568F);
+  border-color: #00253D;
+}
+
+nav.navbar.navbar-barra .canal-corporativo{
+  color: #fff;
+  background: -webkit-linear-gradient(left top, #00520E, #00A31B);
+  background: -o-linear-gradient(bottom right, #00520E, #00A31B);
+  background: -moz-linear-gradient(bottom right, #00520E, #00A31B);
+  background: linear-gradient(to bottom right, #00520E, #00A31B);
+  border-color: #00520E;
+}
+/*--------------------------*/
+
+
+
+
+
+
+
 .popup-canal1 .leaflet-popup-content-wrapper{
 
   background-color: #2196F3;
@@ -271,3 +390,4 @@ footer {
    color:#fff;
   
 }
+

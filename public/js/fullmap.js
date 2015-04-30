@@ -1,5 +1,7 @@
 var map;
-
+var checked;
+var ventasCanal=[0,0,0];
+var ventasServicio=[[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0]];
 var tinyIcon = L.Icon.extend({
 	options: {
 		shadowUrl: '../assets/marker-shadow.png',
@@ -19,7 +21,7 @@ var osm = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: 'Map data &copy; 2014 OpenStreetMap contributors',
         });
 
-var map = L.map('fullmap')
+var map = L.map('fullmap', {zoomControl:true })
            .fitWorld()
            .setView([31.794525,-7.0849336], 3)
            .addLayer(osm);
@@ -30,3 +32,4 @@ myControl = L.control({position: 'topright'});
 	            return this._div;
 	}
 myControl.addTo(map);
+

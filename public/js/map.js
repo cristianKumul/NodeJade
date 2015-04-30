@@ -11,12 +11,9 @@ var tinyIcon = L.Icon.extend({
 	}
 });
 
-var redIcon = new tinyIcon({ iconUrl: '../assets/marker-red.png' });
-var yellowIcon = new tinyIcon({ iconUrl: '../assets/marker-yellow.png' });
-var priceIcon = new tinyIcon({iconUrl:'../assets/price.jpg'});
-
 var osm = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: 'Map data &copy; 2014 OpenStreetMap contributors',
+            minZoom:2
         });
 
 var map = L.map('map')
@@ -30,3 +27,12 @@ myControl = L.control({position: 'topright'});
 	            return this._div;
 	}
 myControl.addTo(map);
+
+
+grafControl = L.control({position: 'bottomleft'});
+	grafControl.onAdd = function(map) {
+	            grafControl._div = L.DomUtil.create('div', 'grafControl');
+	            this.queue = [];
+	            return this._div;
+	}
+grafControl.addTo(map);

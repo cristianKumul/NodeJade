@@ -3,38 +3,146 @@ extend layout
 block content
 	fieldset(class="coords")
 			
-		fieldset
-			legend(class="coords") Intervalo de ventas
-			p Tiempo (s):
-				input(type='number', min='1',id="tiempoVentas")
+		//fieldset
+			legend(class="coords") Tiempo de simulación
+			p Tiempo (min):
+				input(type='number', min='1',max='60' id="tiempoVentas")
 			
-	
 		fieldset
+			- var foo =  60
+			style.
+				#container {
+				    text-align: justify;
+
+							}
+				#container > #num {
+				    width: 100px; /* Declare your value. Can be in relative units. */
+				    display: inline-block;
+				    vertical-align: top;
+				}
+				#container:after {
+				    content: "";
+				    width: 50%;
+				    display: inline-block;
+				}
+			legend(class="coords") Tiempo de simulación
+			#container
+				#num
+					p(align="left") 1 min
+				#num 
+					p(align="center") 30 min
+				//#num
+					p(align="center") 3
+				//#num
+					p(align="center") 4
+				#num
+					p(align="right") 60 min
+				
+			#slider
+			link(rel='stylesheet', href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css")
+			style.
+				#slider { margin: 10px; }
+			script(src="//code.jquery.com/ui/1.11.4/jquery-ui.js")
+			script(type='text/javascript').
+
+				$( "#slider" ).slider({
+					max: 60,
+					min: 1,
+					value:60
+					});
+				$( "#slider" ).on("slidechange",function(event,ui){
+					foo = $( "#slider" ).slider("value");
+					$("#valor").text(function(){if(foo!=1){return foo+" minutos"}else{return foo+" minuto"}});
+					var ventasT = foo/98;//($("#tiempoVentas").val())/98;
+					var marcadorT = foo/4;//($("#tiempoVentas").val() )/ 4; // $("#tiempoMarcador").val();//longitude;
+					
+					// mark user's position
+					
+					sentData = {
+								ventas: ventasT*60,
+								marcador: marcadorT*60	
+							};
+
+					console.log(sentData);
+					socket.emit('config:server', sentData);
+				
+					console.log($( "#slider" ).slider("value"));
+					});
+			p(id="valor") #{foo} minutos
+
+		//fieldset
 			legend(class="coords") Duración de los marcadores en el mapa
 			p Duración (s)   
 				input(type='number', min='1',id="tiempoMarcador")
 			
 		
-		button.btn(id="btn") Enviar
+		//button.btn(id="btn") Enviar
 
 	script(type='text/javascript').
 		$("#btn").click(function (){
 			
 			
 				
-				var ventasT = $("#tiempoVentas").val();
-				var marcadorT = $("#tiempoMarcador").val();//longitude;
+				var ventasT = foo/98;//($("#tiempoVentas").val())/98;
+				var marcadorT = foo/4;//($("#tiempoVentas").val() )/ 4; // $("#tiempoMarcador").val();//longitude;
 				
 				// mark user's position
 				
 				sentData = {
-							ventas: ventasT,
-							marcador: marcadorT	
+							ventas: ventasT*60,
+							marcador: marcadorT*60	
 						};
 
-
+				console.log(sentData);
 				socket.emit('config:server', sentData);
 			
 				alert("Eviado");
 
 			});
+	//script(src="./js/datos.js")
+	//script(src="./data/reservas.js")
+	//script(type='text/javascript').
+		var interval,tiempoEnvio;
+		var destinoRand;
+		var index = 0;
+		var totalServicios ={};
+		for(var i in reservas){
+			if(!(reservas[i].tipoServicio.toString() in totalServicios)){
+				totalServicios[reservas[i].tipoServicio.toString()]=1; 
+			}
+			totalServicios[reservas[i].tipoServicio.toString()]+=1; 
+
+		}
+		console.log(totalServicios);
+		tiempoEnvio=36000,interval;
+		socket.on('config:client', function(data) {
+
+			tiempoEnvio=data.ventas*1000;
+			
+		});
+		function getData(){
+			var userId = Math.random().toString(16).substring(2,15);
+
+			var history = reservas;
+		
+			if ( index == history.length){
+				index = 0;
+				
+				
+			}
+			
+			data = history[index]; 
+			
+
+			
+			data.id = userId;
+			socket.emit('intervalCoords', data);
+			//console.log(sentData);
+			//console.log(tiempoEnvio);
+			//console.log(data);
+			clearInterval(interval);
+			interval = setInterval(getData,tiempoEnvio);
+			index+=1;
+		};
+		
+		interval = setInterval(getData,tiempoEnvio);	

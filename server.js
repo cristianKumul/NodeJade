@@ -16,7 +16,7 @@ app.use(express.static(__dirname + '/public'));
 
 
 //require('./app_modules/routes')(app);
-app.get('/', require('./app_modules/routesFolder/index'));
+app.get('/', require('./app_modules/routesFolder/map'));
 app.get('/send', require('./app_modules/routesFolder/send'));
 app.get('/map', require('./app_modules/routesFolder/map'));
 app.get('/icons',require('./app_modules/routesFolder/graphics'));

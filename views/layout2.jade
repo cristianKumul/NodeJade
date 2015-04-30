@@ -1,0 +1,106 @@
+
+doctype
+html
+
+  head
+  block head  
+      title #{title} - PriceTravel
+      meta(name="viewport",content="width=device-width, initial-scale=1.0")
+      //link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/css/materialize.min.css")
+      link(rel='stylesheet', href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css")
+
+      link(rel='stylesheet', href='/stylesheets/style.css')
+      link(href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css", rel="stylesheet")
+      link(rel='stylesheet', href="http://cdn.leafletjs.com/leaflet-0.7/leaflet.css")
+      //link(rel='stylesheet', href="/stylesheets/custom-leaflet.css")
+      link(rel='stylesheet', href="/stylesheets/font-icons.css")
+      link(rel='stylesheet', href="/stylesheets/leaflet.awesome-markers.css")
+      style.
+        a{
+          color:inherit;
+        }
+      //link(rel='stylesheet', href="http://code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css")
+      //link(rel='stylesheet', href="http://netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css")
+     
+      script(src="/socket.io/socket.io.js")
+        
+        //var socket = io();
+      script(type='text/javascript').
+        var socket= io();
+
+           
+  body
+    
+      header
+        ul(class="nav navbar-nav navbar-right")
+          li
+            a(href="/send" target="_blank")
+              i(class="glyphicon glyphicon-wrench")
+        h1  
+        //a(href="#")
+        
+        ul()
+        //#configureIcon
+            ul
+              i(class="ion-gear-b" id="icon-config" onclick="openWin();return false;")
+        #imgHeader
+
+          img(src="http://si.pricetravel.com.mx/s/es_ES/5780/e911fdad641682b02838ab32b82c9780ca1ecd5a.153/_/images/logo/confluence-logo.png",class="img-responslive" ,alt="PriceTravel" )
+          //img(src="http://images.bestday.com/_lib/images/bestday/viajes-bestday-mexico.png",class="img-responsive" )
+
+      .container2
+        script(src="https://code.jquery.com/jquery-2.1.3.min.js")
+        script(src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js")   
+        script(src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.5/socket.io.js")
+        script(src="http://cdn.leafletjs.com/leaflet-0.7/leaflet.js")
+        //script(src="/js/lib/leaflet.textpath.js")
+        script(src="/js/lib/leaflet.awesome-markers.js") 
+        script(src="/js/lib/Chart.js")
+        script(src="/js/lib/bouncemarker.js")
+        script(type='text/javascript').
+          //$('#icon-config').click(function(){
+          function openWin(){
+              var win = window.open('/send', '_newtab');
+              win.focus();
+
+          }
+          
+        //script(src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/js/materialize.min.js")
+      block navBar
+        - var foo =  title   
+          //nav(class='navbar navbar-default', role='navigation')
+                .container-fluid
+                    .navbar-header
+                        button(class='navbar-toggle', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
+                            span.sronly
+                            span.icon-bar
+                            span.icon-bar
+                            span.icon-bar
+                        
+                    ul(class='nav navbar-nav')
+                        li  
+                            if foo == 'Index'
+                               a(class='navbar-brand',href='/#') HOME
+                            else
+                               a(href='/#') home
+                        li
+                            if foo == 'Mapa'
+                              a(class='navbar-brand',href='/map') MAP
+                            else
+                              a(href='/map') map
+                        //li
+                            if foo == 'Test'
+                              a(class='navbar-brand',href='/test') TEST
+                            else
+                              a(href='/test') test
+                        li
+                            if foo == 'Configurar intervalos'
+                              a(class='navbar-brand',href='/send') CONFIGURACIÓN
+                            else
+                              a(href='/send') conf
+                        
+                        
+      .main-content
+          block content
+
+    
