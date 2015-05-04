@@ -172,7 +172,7 @@ function setMarker(data) {
 				var marker = L.marker([data.destino.lat+randomlat, data.destino.lon+randomlon],
 								{ bounceOnAdd: true, bounceOnAddOptions: {duration: 500, height: 50},
 								 icon: L.AwesomeMarkers.icon({icon: icons[data.tipoServicio -1], prefix: 'icon', markerColor: canal[data.canal -1], spin:false}) }).addTo(map);	
-				marker.bindPopup('<h4>'+data.titulo+'</h4><img src="'+ data.uriFoto+'" width="200" height="auto"/><hr> '+data.descripcion);				
+				marker.bindPopup('<h4>'+data.titulo+'</h4><img src="'+ data.uriFoto+'" width="200" height="auto"/><hr> '+ data.descripcion);				
 				coordinates[marker.getLatLng()] = data.id;
 				markers[data.id] = marker;
 				map.addLayer(markers[data.id]);
@@ -208,14 +208,14 @@ function setMarker(data) {
 			map.addLayer(markers[data.id]);
 			//alert("Circuito");
 		}
-		bar([icons[data.tipoServicio -1],canal[data.canal -1]],data);
+		bar([icons[data.tipoServicio -1],canal[data.canal -1],data]);
 		//grafica(data);
 		//var destmarker = L.marker([data.coords[0].dlat, data.coords[0].dlng], { icon: redIcon}).addTo(map);
 	//}
 }
 
 
-function bar(data,obj){
+function bar(data){
 	//console.log(data.options.iconUrl);
 	if(myControl.queue.length > 9){
     		myControl.queue.shift();
@@ -224,7 +224,8 @@ function bar(data,obj){
     	
     	tabla = '<div><nav class="navbar navbar-barra"><div class="container-fluid"><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav">';
     	for(var i=0; i<myControl.queue.length; i++){
-    		tabla =  tabla + '<li><a href="'+obj.uriFoto+'" data-toggle="lightbox" data-title="'+ obj.titulo+'" data-footer="'+obj.descripcion+'"><span class="icon icon-'+myControl.queue[i][0]+ ' canal-'+myControl.queue[i][1]+'"></span></a></li>';
+    		//tabla =  tabla + '<li><a href="'+obj.uriFoto+'" data-toggle="lightbox" data-title="'+ obj.titulo+'" data-footer="'+obj.descripcion+'"><span class="icon icon-'+myControl.queue[i][0]+ ' canal-'+myControl.queue[i][1]+'"></span></a></li>';
+    		tabla =  tabla + '<li><a href="'+myControl.queue[i][2].uriFoto+'" data-toggle="lightbox" data-title="'+ myControl.queue[i][2].titulo+'" data-footer="'+myControl.queue[i][2].descripcion+'"><span class="icon icon-'+myControl.queue[i][0]+ ' canal-'+myControl.queue[i][1]+'"></span></a></li>';
     	}
     	tabla += '</ul></div></div></nav></div>';
 
