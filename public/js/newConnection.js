@@ -55,7 +55,7 @@ socket.on('load:coords', function(data) {
 		updateBoth(checked, data);
 
 	}
-	
+	/*cambio para nuevo commit*/
 	/*else{
 		var lastKey;
 		for(var key in markers){
