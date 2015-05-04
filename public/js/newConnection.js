@@ -143,8 +143,7 @@ function setMarker(data) {
 								{ bounceOnAdd: true, bounceOnAddOptions: {duration: 500, height: 50},
 								 icon: L.AwesomeMarkers.icon({icon: icons[data.tipoServicio -1], prefix: 'icon', markerColor: canal[data.canal -1], spin:false}) }).addTo(map);	
 			//marker.bindPopup('<p>¡Una venta aquí!<br>Usuario:<b>'+data.tipoServicio+'</b><br>Destino:['+data.destino.lat+','+data.destino.lon+']<br>' + '<a href="#" id="showRoute" data-coords=\'{"olat":"'+data.destino.lon+'","olng":"'+data.destino.lon+'","dlat":"'+data.destino.lon+'","dlng":"'+data.destino.lon+'"}\' onclick="drawPolyline();return false;" >Ver ruta</a></p> ');
-			marker.bindPopup('<p>¡Una venta aquí!<br>Usuario:<b>'+data.tipoServicio+'</b><br>Destino:['+data.destino.lat+','+data.destino.lon+']<br>' + '<a href="#" id="showRoute" data-coords=\'{"olat":"'+data.destino.lon+'","olng":"'+data.destino.lon+'","dlat":"'+data.destino.lon+'","dlng":"'+data.destino.lon+'"}\' onclick="drawPolyline();return false;" >Ver ruta</a></p> ');
-			
+			marker.bindPopup('<h4>Titulo</h4><img src="http://materializecss.com/images/sample-1.jpg" width="200" height="auto"/><hr>Descripcion');	
 			coordinates[marker.getLatLng()] = data.id;
 
 			
@@ -173,7 +172,7 @@ function setMarker(data) {
 				var marker = L.marker([data.destino.lat+randomlat, data.destino.lon+randomlon],
 								{ bounceOnAdd: true, bounceOnAddOptions: {duration: 500, height: 50},
 								 icon: L.AwesomeMarkers.icon({icon: icons[data.tipoServicio -1], prefix: 'icon', markerColor: canal[data.canal -1], spin:false}) }).addTo(map);	
-				marker.bindPopup('<p>¡Una venta aquí!<br>Usuario:<b>'+data.tipoServicio+'</b><br>Destino:['+data.destino.lat+','+data.destino.lon+']<br>' + '<a href="#" id="showRoute" data-coords=\'{"olat":"'+data.destino.lon+'","olng":"'+data.destino.lon+'","dlat":"'+data.destino.lon+'","dlng":"'+data.destino.lon+'"}\' onclick="drawPolyline();return false;" >Ver ruta</a></p> ');
+				marker.bindPopup('<h4>Titulo</h4><img src="http://materializecss.com/images/sample-1.jpg" width="200" height="auto"/><hr>Descripcion');				
 				coordinates[marker.getLatLng()] = data.id;
 				markers[data.id] = marker;
 				map.addLayer(markers[data.id]);
