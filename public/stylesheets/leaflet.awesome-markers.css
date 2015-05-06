@@ -7,8 +7,8 @@ Version: 1.0
 /* Marker setup */
 .awesome-marker {
   background: url('images/foo.png') no-repeat 0 0;
-  width: 35px;
-  height: 46px;
+  width: 30px;
+  height: 40px;
   position:absolute;
   left:0;
   top:0;
@@ -27,11 +27,11 @@ Version: 1.0
 (-webkit-min-device-pixel-ratio: 1.5),(min-device-pixel-ratio: 1.5),(min-resolution: 1.5dppx) {
  .awesome-marker {
   background-image: url('images/markers-soft@2x.png');
-  background-size: 720px 46px;
+  background-size: 715px 40px;
  }
  .awesome-marker-shadow {
   background-image: url('images/markers-shadow@2x.png');
-  background-size: 35px 16px;
+  background-size: 33px 16px;
  }
 }
 
@@ -51,7 +51,7 @@ Version: 1.0
   background-position: 0 0;
 }
 .awesome-marker-icon-propias {
-  background-position: 0 0;
+  background-position: 2px 0;
 }
 .awesome-marker-icon-darkred {
   background-position: -180px 0;
@@ -65,7 +65,7 @@ Version: 1.0
   background-position: -36px 0;
 }
 .awesome-marker-icon-corporativo {
-  background-position: -36px 0;
+  background-position: -34px 0;
 }
 .awesome-marker-icon-beige {
   background-position: -396px 0;
@@ -75,7 +75,7 @@ Version: 1.0
   background-position: -72px 0;
 }
 .awesome-marker-icon-terceros {
-  background-position: -72px 0;
+  background-position: -70px 0;
 }
 
 .awesome-marker-icon-darkgreen {
