@@ -15,6 +15,17 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
-  "author": "",
-  "license": "ISC"
+  "author": "Kumul , Peraza",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cristianKumul/NodeJade.git"
+  },
+  "keywords": [
+    "Real-Time"
+  ],
+  "bugs": {
+    "url": "https://github.com/cristianKumul/NodeJade/issues"
+  },
+  "homepage": "https://github.com/cristianKumul/NodeJade"
 }
