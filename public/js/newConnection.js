@@ -169,6 +169,8 @@ function setMarker(data) {
 			//alert("Circuito");
 		}
 		bar([icons[data.tipoServicio -1],canal[data.canal -1],data]);
+		$(".block").animate({"right" : "+=50px"}, "slow");
+
 		//grafica(data);
 		//var destmarker = L.marker([data.coords[0].dlat, data.coords[0].dlng], { icon: redIcon}).addTo(map);
 	//}
