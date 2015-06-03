@@ -52,7 +52,7 @@ io.sockets.on('connection', function (socket) {
         socket.broadcast.emit('config:client', data);
        
     });
-
+    
 });
 
 //http.listen(8080)

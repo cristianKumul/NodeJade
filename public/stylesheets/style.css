@@ -365,7 +365,35 @@ nav.navbar.navbar-barra .canal-corporativo{
 }
 /*--------------------------*/
 
+/*========== popup leaflet ==============*/
 
+
+.custom-popup .leaflet-popup-content-wrapper {
+  background:#fff;
+  /*opacity: 0.4;*/
+  color:#0000;
+  font-size:16px;
+  line-height:24px;
+  }
+.custom-popup .leaflet-popup-content-wrapper a {
+  /*opacity: 0.4;*/
+  color:rgba(255,255,255,0.5);
+  }
+.custom-popup .leaflet-popup-tip-container{
+  width:30px;
+  height:15px;
+  }
+.custom-popup .leaflet-popup-tip {
+
+   /*opacity: 0.4;*/
+  background:#fff;
+  border-left:0 solid transparent;
+  border-right:0 solid transparent;
+  border-top:0 solid transparent;
+  
+  }
+
+/*=========================================*/
 
 
 
@@ -391,3 +419,32 @@ nav.navbar.navbar-barra .canal-corporativo{
   
 }
 
+/*----------------------------------------------------*/
+
+.home-logos-sprite,.home-logos-aeromex,.home-logos-aircanada,.home-logos-airfrance,.home-logos-american,.home-logos-avianca,.home-logos-british,.home-logos-continental,.home-logos-delta,.home-logos-iberia,.home-logos-interjet,.home-logos-klm,.home-logos-lan,.home-logos-luft,.home-logos-tar,.home-logos-usairways,.home-logos-copa
+  {background:url('http://cdnpt.com/images/home-vuelos-logos.png') no-repeat;width:120px;
+    height:120px}
+.home-logos-aeromex{background-position:0 -1202px}
+.home-logos-aircanada{background-position:0 -360px}
+.home-logos-airfrance{background-position:0 -1323px}
+.home-logos-american{background-position:0 -601px}
+.home-logos-avianca{background-position:0 -841px}
+.home-logos-british{background-position:0 -1563px}
+.home-logos-continental{background-position:0 0}
+.home-logos-delta{background-position:0 -962px}
+.home-logos-iberia{background-position:0 -480px}
+.home-logos-interjet{background-position:0 -1082px}
+.home-logos-klm{background-position:0 -1443px}
+.home-logos-lan{background-position:0 -240px}
+.home-logos-luft{background-position:0 -120px}
+.home-logos-tar{background-position:0 -721px}
+.home-logos-usairways{background-position:0 -1683px}
+.home-logos-copa{background-position:0 -1804px}
+
+#airl  span.home-logos-sprite{display:inline-block;text-align:center}
+
+div[id^="ekkoLightbox-"]{
+  top:25%;
+  /*right:50%;*/
+  outline: none;
+}

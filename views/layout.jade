@@ -3,12 +3,15 @@ doctype
 html
 
   head
+    meta(name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no")
+    title #{title} - PriceTravel
   block head  
-      title #{title} - PriceTravel
+      
       
    
       link(rel='stylesheet', href='/stylesheets/style.css')
-      link(href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css", rel="stylesheet")
+      link(href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css", rel="stylesheet")
+      link(rel='stylesheet', href="//cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/3.3.0/ekko-lightbox.min.css")
       link(rel='stylesheet', href="http://cdn.leafletjs.com/leaflet-0.7/leaflet.css")
       //link(rel='stylesheet', href="/stylesheets/custom-leaflet.css")
       link(rel='stylesheet', href="/stylesheets/font-icons.css")
@@ -16,28 +19,92 @@ html
       //link(rel='stylesheet', href="http://code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css")
       //link(rel='stylesheet', href="http://netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css")
       //link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/css/materialize.min.css")
-
+      
       script(src="/socket.io/socket.io.js")
-        
-        //var socket = io();
       script(type='text/javascript').
         var socket= io();
+     //style.
+        div.row > div > div.row {
+                margin-bottom: 15px;
+            }
+            div.top-header {
+                margin-bottom:100px;
+            }
+            h3.page-header {
+                margin-top: 50px;
+            }
+            figure {
+                position: relative;
+            }
+            figure figcaption {
+                font-size: 22px;
+                color: #fff;
+                text-decoration: none;
+                bottom: 10px;
+                right: 20px;
+                position: absolute;
+                background-color: #000;
+            }
+            code {
+              white-space: pre-wrap;       /* css-3 */
+              white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+              white-space: -pre-wrap;      /* Opera 4-6 */
+              white-space: -o-pre-wrap;    /* Opera 7 */
+              word-wrap: break-word;       /* Internet Explorer 5.5+ */
+            }
+              
+        //var socket = io();
+      
+        
+        
+     
            
   body
+
     
+
+
+
+
+
+
     header
       h1  #{title}
+    
+      
        
     .container
+
       script(src="https://code.jquery.com/jquery-2.1.3.min.js")
-      script(src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js")   
+      script(src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js")   
+      script(src="http://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/3.3.0/ekko-lightbox.min.js")
       script(src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.5/socket.io.js")
       script(src="http://cdn.leafletjs.com/leaflet-0.7/leaflet.js")
       //script(src="/js/lib/leaflet.textpath.js")
       script(src="/js/lib/leaflet.awesome-markers.js") 
       script(src="/js/lib/Chart.js")
       script(src="/js/lib/bouncemarker.js")
-      //script(src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/js/materialize.min.js")
+      script(src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/js/materialize.min.js")
+      script(type='text/javascript').
+        
+        $(document).ready(function ($) {
+          $(document).delegate('*[data-toggle="lightbox"]:not([data-gallery="navigateTo"])', 'click', function(event) {
+                    event.preventDefault();
+                    return $(this).ekkoLightbox({
+                        onShown: function() {
+                            if (window.console) {
+                                return console.log('Checking our the events huh?');
+                            }
+                        },
+            onNavigate: function(direction, itemIndex) {
+                            if (window.console) {
+                                return console.log('Navigating '+direction+'. Current item: '+itemIndex);
+                            }
+            }
+                    });
+                });
+         });
+
       block navBar
       - var foo =  title   
         nav(class='navbar navbar-default', role='navigation')

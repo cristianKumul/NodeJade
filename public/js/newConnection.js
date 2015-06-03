@@ -8,8 +8,8 @@ var markerId;
 var tiempoMarcador=900000;
 
 
-
-var icons=['hotels','transfers','flights','tours','cars','packages','buses','cruises','circuits'],
+// icons=['hotels','transfers','flights','tours','cars','packages','buses','cruises','circuits']
+var icons=['hotels','flights','packages','buses','cars','transfers','tours','cruises','circuits'],
 	canal=['propias','terceros','corporativo'],
 	colorCanal=['#f04276','#007F16','#00365B'];
 
@@ -56,7 +56,7 @@ socket.on('load:coords', function(data) {
 		updateBoth(checked, data);
 
 	}
-	
+	/*cambio para nuevo commit*/
 	/*else{
 		var lastKey;
 		for(var key in markers){
@@ -143,13 +143,13 @@ function setMarker(data) {
 			var marker = L.marker([data.destino.lat, data.destino.lon],
 								{ bounceOnAdd: true, bounceOnAddOptions: {duration: 500, height: 50},
 								 icon: L.AwesomeMarkers.icon({icon: icons[data.tipoServicio -1], prefix: 'icon', markerColor: canal[data.canal -1], spin:false}) }).addTo(map);	
-
-			
+			//marker.bindPopup('<p>¡Una venta aquí!<br>Usuario:<b>'+data.tipoServicio+'</b><br>Destino:['+data.destino.lat+','+data.destino.lon+']<br>' + '<a href="#" id="showRoute" data-coords=\'{"olat":"'+data.destino.lon+'","olng":"'+data.destino.lon+'","dlat":"'+data.destino.lon+'","dlng":"'+data.destino.lon+'"}\' onclick="drawPolyline();return false;" >Ver ruta</a></p> ');
+			marker.bindPopup('<h4>'+data.titulo+'</h4><img src="'+ data.uriFoto+'" width="200" height="auto"/><hr> '+data.descripcion);	
 			coordinates[marker.getLatLng()] = data.id;
 
 			
 		//var marker = L.marker([data.coords[0].olat, data.coords[0].olng], { icon: yellowIcon}).addTo(map);
-		marker.bindPopup('<p>¡Una venta aquí!<br>Usuario:<b>'+data.tipoServicio+'</b><br>Destino:['+data.destino.lat+','+data.destino.lon+']<br>' + '<a href="#" id="showRoute" data-coords=\'{"olat":"'+data.destino.lon+'","olng":"'+data.destino.lon+'","dlat":"'+data.destino.lon+'","dlng":"'+data.destino.lon+'"}\' onclick="drawPolyline();return false;" >Ver ruta</a></p> ');
+		//marker.bindPopup('<p>¡Una venta aquí!<br>Usuario:<b>'+data.tipoServicio+'</b><br>Destino:['+data.destino.lat+','+data.destino.lon+']<br>' + '<a href="#" id="showRoute" data-coords=\'{"olat":"'+data.destino.lon+'","olng":"'+data.destino.lon+'","dlat":"'+data.destino.lon+'","dlng":"'+data.destino.lon+'"}\' onclick="drawPolyline();return false;" >Ver ruta</a></p> ');
 		//
 		markers[data.id] = marker;//tmp={olat:'+data.coords[0].olat+',olng:'+data.coords[0].olng+',dlat:'+data.coords[0].dlat+',dlng:'+data.coords[0].dlng+'}
 		map.addLayer(markers[data.id]);
@@ -173,7 +173,7 @@ function setMarker(data) {
 				var marker = L.marker([data.destino.lat+randomlat, data.destino.lon+randomlon],
 								{ bounceOnAdd: true, bounceOnAddOptions: {duration: 500, height: 50},
 								 icon: L.AwesomeMarkers.icon({icon: icons[data.tipoServicio -1], prefix: 'icon', markerColor: canal[data.canal -1], spin:false}) }).addTo(map);	
-
+				marker.bindPopup('<h4>'+data.titulo+'</h4><img src="'+ data.uriFoto+'" width="200" height="auto"/><hr> '+ data.descripcion);				
 				coordinates[marker.getLatLng()] = data.id;
 				markers[data.id] = marker;
 				map.addLayer(markers[data.id]);
@@ -209,7 +209,7 @@ function setMarker(data) {
 			map.addLayer(markers[data.id]);
 			//alert("Circuito");
 		}
-		bar([icons[data.tipoServicio -1],canal[data.canal -1]]);
+		bar([icons[data.tipoServicio -1],canal[data.canal -1],data]);
 		//grafica(data);
 		//var destmarker = L.marker([data.coords[0].dlat, data.coords[0].dlng], { icon: redIcon}).addTo(map);
 	//}
@@ -225,7 +225,8 @@ function bar(data){
     	
     	tabla = '<div><nav class="navbar navbar-barra"><div class="container-fluid"><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav">';
     	for(var i=0; i<myControl.queue.length; i++){
-    		tabla =  tabla + '<li><a href="#"><span class="icon icon-'+myControl.queue[i][0]+ ' canal-'+myControl.queue[i][1]+'"></span></a></li>';
+    		//tabla =  tabla + '<li><a href="'+obj.uriFoto+'" data-toggle="lightbox" data-title="'+ obj.titulo+'" data-footer="'+obj.descripcion+'"><span class="icon icon-'+myControl.queue[i][0]+ ' canal-'+myControl.queue[i][1]+'"></span></a></li>';
+    		tabla =  tabla + '<li><a href="'+myControl.queue[i][2].uriFoto+'" data-toggle="lightbox" data-title="'+ myControl.queue[i][2].titulo+'" data-footer="'+myControl.queue[i][2].descripcion+'"><span class="icon icon-'+myControl.queue[i][0]+ ' canal-'+myControl.queue[i][1]+'"></span></a></li>';
     	}
     	tabla += '</ul></div></div></nav></div>';
 

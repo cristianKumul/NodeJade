@@ -2,9 +2,15 @@ extend layout
 
 block content
 	fieldset(class="coords")
+		//ul(id="airl")
+			li
+		
 			
+
+			a(href="http://cdn.precioyviajes.com/documents/HotelMain/13/03/05/hqqkqzi2uhc23tx9mb9p_th.jpg" data-toggle="lightbox" data-title="Best Western Maya Yucatán" data-footer="Hotel con alberca en el centro de Mérida")
+				span(class="home-logos-lan home-logos-sprite")		
 		//fieldset
-			legend(class="coords") Tiempo de simulación
+		//legend(class="coords") Tiempo de simulación
 			p Tiempo (min):
 				input(type='number', min='1',max='60' id="tiempoVentas")
 			
@@ -15,7 +21,7 @@ block content
 				    text-align: justify;
 
 							}
-				#container > #num {
+				#container > .num {
 				    width: 100px; /* Declare your value. Can be in relative units. */
 				    display: inline-block;
 				    vertical-align: top;
@@ -27,15 +33,15 @@ block content
 				}
 			legend(class="coords") Tiempo de simulación
 			#container
-				#num
+				.num
 					p(align="left") 1 min
-				#num 
+				.num 
 					p(align="center") 30 min
 				//#num
 					p(align="center") 3
 				//#num
 					p(align="center") 4
-				#num
+				.num
 					p(align="right") 60 min
 				
 			#slider
