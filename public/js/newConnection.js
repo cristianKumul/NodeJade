@@ -95,47 +95,6 @@ function updateBoth(option, data){
 	
 }
 
-function uptateGraph(data){
-
-	switch(data.canal) {
-
-		case 1:
-			myRadar.datasets[0].points[data.tipoServicio -1].value += 1;
-			myRadar.update();
-			break;
-		case 2:
-			myRadar.datasets[1].points[data.tipoServicio -1].value += 1;
-			myRadar.update();
-			break;
-		case 3:
-			myRadar.datasets[2].points[data.tipoServicio -1].value += 1;
-			myRadar.update();
-			break;
-
-	}
-}
-function uptateGraphD(data){
-
-	switch(data.canal) {
-
-		case 1:
-			
-			myDoughnutChart.segments[0].value +=1;
-			
-			break;
-		case 2:
-			
-			myDoughnutChart.segments[1].value+=1;
-			
-			break;
-		case 3:
-			
-			myDoughnutChart.segments[2].value+=1;
-			break;
-
-	}
-	myDoughnutChart.update();
-}
 function setMarker(data) {
 	//for (var i = 0; i < data.coords.length; i++) {
 		if(data.tipoServicio!=9){
@@ -226,7 +185,7 @@ function bar(data){
     	tabla = '<div><nav class="navbar navbar-barra"><div class="container-fluid"><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav">';
     	for(var i=0; i<myControl.queue.length; i++){
     		//tabla =  tabla + '<li><a href="'+obj.uriFoto+'" data-toggle="lightbox" data-title="'+ obj.titulo+'" data-footer="'+obj.descripcion+'"><span class="icon icon-'+myControl.queue[i][0]+ ' canal-'+myControl.queue[i][1]+'"></span></a></li>';
-    		tabla =  tabla + '<li><a href="'+myControl.queue[i][2].uriFoto+'" data-toggle="lightbox" data-title="'+ myControl.queue[i][2].titulo+'" data-footer="'+myControl.queue[i][2].descripcion+'"><span class="icon icon-'+myControl.queue[i][0]+ ' canal-'+myControl.queue[i][1]+'"></span></a></li>';
+    		tabla =  tabla + '<li class="block"><a href="'+myControl.queue[i][2].uriFoto+'" data-toggle="lightbox" data-title="'+ myControl.queue[i][2].titulo+'" data-footer="'+myControl.queue[i][2].descripcion+'"><span class="icon icon-'+myControl.queue[i][0]+ ' canal-'+myControl.queue[i][1]+'"></span></a></li>';
     	}
     	tabla += '</ul></div></div></nav></div>';
 

@@ -21,7 +21,7 @@ var osm = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: 'Map data &copy; 2014 OpenStreetMap contributors',
         });
 
-var map = L.map('fullmap', {zoomControl:true })
+var map = L.map('fullmap', {zoomControl:false })
            .fitWorld()
            .setView([31.794525,-7.0849336], 3)
            .addLayer(osm);

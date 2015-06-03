@@ -109,22 +109,23 @@ body {
   color: #444;
 }
 header {
-  font-family: 'Quicksand';
-  height:8%;
-  padding: 5px 10px;
-  color: #fff;
-  font-size: 15px;
-  text-align: left;
-  top:0px;
-  
+  background-color: none;
+  border-bottom: none;
+  text-shadow: none;
+  background: transparent;
+  position: absolute;
+  top: 13px;
+  left: 3%;
+  z-index: 10;
+  padding: 0;
+}
 
-/*
-   * Note the use of the `main-color`
-   * variable and the `darken` function
-   */
-  background-color:#00365B;
-  border-bottom: 1px solid #068976;
-  text-shadow: 0px -1px 0px #068976;
+div#imgHeader {
+  height: auto;
+  width: auto;
+  background-color: rgba(255,255,255,0.7);
+  padding: 7px 3px 10px 0px;
+  border-radius: 10px;
 }
 
 .wrapper {
@@ -194,14 +195,14 @@ footer {
         position: fixed;
         
         width: 100%;
-        height: 92%
+        height: 100%
 
     }
 #map {
         position: fixed;
         
         width: 100%;
-        height: 92%
+        height: 100%
 
     }
     .help {
@@ -271,6 +272,9 @@ footer {
     color:#eeeeee;
 }
 
+ul.nav>li>a:focus, ul.nav>li>a:hover {
+  background-color: transparent;
+}
 
 canvas{
   padding: 0;
