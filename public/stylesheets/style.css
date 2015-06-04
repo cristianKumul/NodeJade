@@ -390,6 +390,13 @@ nav.navbar.navbar-barra .canal-corporativo{
   
   }
 
+.modal-dialog {
+    min-width: 35%;
+}
+
+.modal-dialog img {
+    margin: 0 auto;
+}
 /*=========================================*/
 
 
