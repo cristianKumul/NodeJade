@@ -198,6 +198,15 @@ footer {
         height: 100%
 
     }
+/* Modificacion de leaftlet para la velocidad del Zoom*/
+
+.leaflet-zoom-anim .leaflet-zoom-animated {
+  -webkit-transition: -webkit-transform 0.50s cubic-bezier(0,0,0.25,1);
+     -moz-transition:    -moz-transform 0.50s cubic-bezier(0,0,0.25,1);
+       -o-transition:      -o-transform 0.50s cubic-bezier(0,0,0.25,1);
+          transition:         transform 0.50s cubic-bezier(0,0,0.25,1);
+  }
+/*  --------------------------------------------------*/
 #map {
         position: fixed;
         

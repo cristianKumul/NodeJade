@@ -48,7 +48,7 @@ socket.on('load:coords', function(data) {
 				//console.log(markers[i]);
 			} 
 			var group= new L.featureGroup(markersBounds);
-			map.fitBounds(group.getBounds(),{padding: [50, 50],maxZoom:15});
+			map.fitBounds(group.getBounds(),{padding: [50, 50],maxZoom:15,pan:{animate:true,duration:0.5,easeLinearity:0.81},zoom:{pan:{animate:true,duration:0.8,easeLinearity:0.81}}});
 			//console.log( Object.keys(markers).length);
 		}
 		ventasCanal[data.canal-1]+=1;

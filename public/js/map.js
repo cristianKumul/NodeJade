@@ -20,6 +20,7 @@ var map = L.map('map')
            .fitWorld()
            .setView([31.794525,-7.0849336], 2)
            .addLayer(osm);
+map.
 myControl = L.control({position: 'topright'});
 	myControl.onAdd = function(map) {
 	            myControl._div = L.DomUtil.create('div', 'myControl');
