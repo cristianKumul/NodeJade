@@ -319,6 +319,9 @@ nav.navbar.navbar-barra {
     border: none;
 }
 
+nav.navbar.navbar-barra .canal-propias,nav.navbar.navbar-barra .canal-terceros,nav.navbar.navbar-barra .canal-corporativo{
+  -webkit-background-clip: padding-box;
+}
 nav.navbar.navbar-barra a{
   margin: 30% 0 0 0;
   padding: 0;
