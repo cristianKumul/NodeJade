@@ -239,14 +239,7 @@ footer {
 
 
 }
-#imgHeader{
-  height: 32px;
-  width: 190px;
-}
-#imgHeader > img{
-   width:100%;
-   height: 100%;;
-}
+
 .navbar .navbar-collapse {
   text-align: center;
 }
