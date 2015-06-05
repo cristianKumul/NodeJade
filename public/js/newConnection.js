@@ -5,7 +5,7 @@ var coordinates={};
 var listMarker=[];
 var intervalMarker = {};
 var markerId;
-var tiempoMarcador=900000;
+var tiempoMarcador=1080000;
 
 
 // icons=['hotels','transfers','flights','tours','cars','packages','buses','cruises','circuits']
@@ -16,7 +16,7 @@ var icons=['hotels','flights','packages','buses','cars','transfers','tours','cru
 socket.on('config:client', function(data) {
 
 			tiempoMarcador=data.marcador*1000;
-			
+		
 });
 socket.on('load:coords', function(data) {
 	var n = Object.keys(markers).length;
@@ -76,6 +76,7 @@ socket.on('load:coords', function(data) {
 	connects[data.id].timeout = true;
 
 	console.log("Número de markers: "+ Object.keys(connects).length);
+	
 	
 });
 
@@ -216,24 +217,46 @@ function intervalTrigger(marker){
 
 // elimina cada n tiempo el marcador que cumpla la condici
 setInterval(function() {
+	if(Object.keys(connects).length > 24)
+	{
+		for (var i = 0; i <Object.keys(connects).length - 24; i++) {
+			//var first = Object.keys(connects)[0];
+			intervalMarker[ Object.keys(connects)[i]] = intervalTrigger(markers[i]);
+		}
+		//var first = Object.keys(connects)[0];
+		//intervalMarker[first] = intervalTrigger(markers[first]);
+	}
+	if(Object.keys(connects).length > 26)
+	{
+		for (var i = 0; i < Object.keys(connects).length - 26; i++) {
+			var first = Object.keys(connects)[i];
+			delete connects[first];
+			delete coordinates[markers[first].getLatLng()];
+			map.removeLayer(markers[first]);
+			delete markers[first];
+			window.clearInterval(intervalMarker[first]);
+			console.log("marcador eliminado: "+Object.keys(connects).length);
+			
+		}
+		
+	}
 	for (var ident in connects){
-		if ($.now() - connects[ident].updated > (tiempoMarcador-1000)) {
+		
+		
+		if ($.now() - connects[ident].updated > (tiempoMarcador-1000) ) {
 					if (connects[ident].timeout){
 							connects[ident].timeout = false;
 							intervalMarker[ident] = intervalTrigger(markers[ident]);
-							/*setInterval(function() {
-								opacity = markers[ident].options.opacity;
-								markers[ident].setOpacity( opacity- 0.05);
-							},200);*/
+						
 
 					}
 					
-					//console.log("Entrando............ "+markers[ident].options.opacity);
+					
 					
 					
 
 		}
-		if ($.now() - connects[ident].updated > tiempoMarcador) {
+		if ($.now() - connects[ident].updated > tiempoMarcador ) {
 			//console.log(markers[ident]);
 			delete connects[ident];
 			delete coordinates[markers[ident].getLatLng()];
@@ -242,5 +265,6 @@ setInterval(function() {
 			window.clearInterval(intervalMarker[ident]);
 
 		}
+		
 	}
 }, 1000);
