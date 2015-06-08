@@ -23,8 +23,19 @@ app.get('/icons',require('./app_modules/routesFolder/graphics'));
 app.get('/map1',require('./app_modules/routesFolder/map1'))
 app.get('/test',require('./app_modules/routesFolder/test'))
 // Se crea la base de datos
-app.use(require('./app_modules/routesFolder/404'))
 
+app.get('/info/:tagId',require('./app_modules/routesFolder/info'));
+
+app.get('/p/:tagId', function(req, res) {
+  var parameter = req.param("tagId");
+  res.send("Parámeto tagId : " + parameter);
+  io.sockets.emit('testEmit', parameter);
+
+});
+
+app.use(require('./app_modules/routesFolder/404'))
+//var routes = require('./app_modules/routesFolder/routeSocket')(io)
+//app.get('/pruebaSocket',routes.mensaje)
 
 
 //conexiones al socket.io

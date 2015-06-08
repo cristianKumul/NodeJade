@@ -1,0 +1,11 @@
+extend layout
+
+title #{value}
+
+block content
+	script(type='text/javascript').
+		//var socket= io();//io.connect('http://localhost:8080');//io();//io(); 
+		socket.on('testEmit', function(data) {
+			var foo = JSON.parse(data);
+			console.log('Se ha enviado por Get: '+ foo.name);
+		});
