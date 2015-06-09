@@ -62,7 +62,7 @@ block content
 					var ventasT = foo/98;//($("#tiempoVentas").val())/98;
 					var marcadorT = foo/4;//($("#tiempoVentas").val() )/ 4; // $("#tiempoMarcador").val();//longitude;
 					
-					// mark user's position
+					// posición del marcador
 					
 					sentData = {
 								ventas: ventasT*60,
@@ -76,13 +76,7 @@ block content
 					});
 			p(id="valor") #{foo} minutos
 
-		//fieldset
-			legend(class="coords") Duración de los marcadores en el mapa
-			p Duración (s)   
-				input(type='number', min='1',id="tiempoMarcador")
-			
 		
-		//button.btn(id="btn") Enviar
 
 	script(type='text/javascript').
 		$("#btn").click(function (){

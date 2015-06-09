@@ -1,0 +1,3 @@
+{titulo:'ESTELAR Grand Playa Manzanillo By Occidental Hotels & Resorts Cartagena',descripcion:'Hotel en Cartagena de Indias cerca del campo de golf Karibana',uriFoto:'http://cdn.precioyviajes.com/documents/HotelMain/13/03/05/4mj2htertho6579tnlkw_th.jpg',tipoServicio:'3',destino:{lat:'10.523971',lon:'-75.493092'},canal:'2'}
+
+{"titulo":"ESTELAR Grand Playa Manzanillo By Occidental Hotels & Resorts Cartagena","descripcion":"Hotel en Cartagena de Indias cerca del campo de golf Karibana","uriFoto":"http%3A%2F%2Fcdn.precioyviajes.com%2Fdocuments%2FHotelMain%2F13%2F03%2F05%2F4mj2htertho6579tnlkw_th.jpg" ,"tipoServicio":"3","destino":{"lat":"10.523971","lon":"-75.493092"},"canal":"2"}

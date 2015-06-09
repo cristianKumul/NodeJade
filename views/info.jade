@@ -7,5 +7,6 @@ block content
 		//var socket= io();//io.connect('http://localhost:8080');//io();//io(); 
 		socket.on('testEmit', function(data) {
 			var foo = JSON.parse(data);
-			console.log('Se ha enviado por Get: '+ foo.name);
-		});
+			//console.log('Sin parse : '+ data);
+			console.log('Se ha enviado por Get: '+ foo.destino.lat +" ," +foo.destino.lon + "," + foo.titulo);
+		})
