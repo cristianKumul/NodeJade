@@ -1,73 +1,86 @@
 var map;
 var checked;
+/*Diccionarios de ayuda en las graficas
+  ventasCanal: Hace una suma de los marcadores desde el momento que se abre el mapa y almacena por canal de venta
+  ventasSercivio: HAce una suma de los marcadores de acuerdo del tipo de servicio de la venta
+*/
 var ventasCanal=[0,0,0];
 var ventasServicio=[[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0]];
-var tinyIcon = L.Icon.extend({
-	options: {
-		shadowUrl: '../assets/marker-shadow.png',
-		iconSize: [25, 39],
-		iconAnchor:   [12, 36],
-		shadowSize: [41, 41],
-		shadowAnchor: [12, 38],
-		popupAnchor: [0, -30]
-	}
-});
 
-var redIcon = new tinyIcon({ iconUrl: '../assets/marker-red.png' });
-var yellowIcon = new tinyIcon({ iconUrl: '../assets/marker-yellow.png' });
-var priceIcon = new tinyIcon({iconUrl:'../assets/price.jpg'});
-
+/*Inicializacion del mapa
+  fullmap: es el contenedor html que aloja el mapa
+  zoomControl: deshabilita los botones de zoom
+  setView: cambia las coordenadas de inicio, y zoom inicial
+  addLayer: agrega la referencia de OpenStreetMap 
+*/
 var osm = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: 'Map data &copy; 2014 OpenStreetMap contributors',
-        });
+    attribution: 'Map data &copy; 2014 OpenStreetMap contributors',
+});
 
 var map = L.map('fullmap', {zoomControl:false })
            .fitWorld()
            .setView([31.794525,-7.0849336], 3)
            .addLayer(osm);
-myControl = L.control({position: 'topright'});
-	myControl.onAdd = function(map) {
-	            myControl._div = L.DomUtil.create('div', 'myControl');
-	            this.queue = [];
-	            return this._div;
-	}
-myControl.addTo(map);
 
+
+/*Contenedor para barra de Ventas
+  Se crea un div que guardara cada uno de los iconos de ventas,
+  se crea una cola para las ventas, donde se guardaran las ultimas 10 ventas realizadas
+*/
+barraVentas = L.control({position: 'topright'});
+
+barraVentas.onAdd = function(map) {
+    barraVentas._div = L.DomUtil.create('div', 'barraVentas');
+    this.queue = [];
+    return this._div;
+}
+
+barraVentas.addTo(map);
+
+
+/*Contenedor para la seleccion de tipo de grafica*/
 grafControl = L.control({position: 'bottomleft'});
-	grafControl.onAdd = function(map) {
-	            grafControl._div = L.DomUtil.create('div', 'grafControl');
-	            this.queue = [];
-	            return this._div;
-	}
+grafControl.onAdd = function(map) {
+  grafControl._div = L.DomUtil.create('div', 'grafControl');
+  this.queue = [];
+  return this._div;
+}
+
+/*Contenedor para las graficas*/
 grafControl.addTo(map);
 Control = L.control({position: 'topleft'});
-	Control.onAdd = function(map) {
-	            Control._div = L.DomUtil.create('div', 'Control');
-	            this._div.innerHTML = '<div class="options"><form id="optionsGraph"><input type="radio" name="opt" value="1" checked>Ninguno<br><input type="radio" name="opt" value="2">Radar<br><input type="radio" name="opt" value="3">Circular</form></div>';
-	            return this._div;
-	}
+Control.onAdd = function(map) {
+  Control._div = L.DomUtil.create('div', 'Control');
+  this._div.innerHTML = '<div class="options"><form id="optionsGraph"><input type="radio" name="opt" value="1" checked>Ninguno<br><input type="radio" name="opt" value="2">Radar<br><input type="radio" name="opt" value="3">Circular</form></div>';
+  return this._div;
+}
 Control.addTo(map);
 
-	
- $('input[type=radio][name=opt]').change(function () {
-            checked = $("input[name='opt']:checked").val();
-            switch(checked){
+/*validamos que radioButton esta activo para pintar el tipo de grafica
+  1: Ninguno
+  2: Radar
+  3: Circular
+*/	
+$('input[type=radio][name=opt]').change(function () {
+  checked = $("input[name='opt']:checked").val();
+  switch(checked){
 
-            	case '1':
-            		ocultarGraficas();
-					break;            			
-            	case '2':
-            		ocultarGraficas();
-            		crearGraficaRadar();
-					break;	
-            	case '3':
-            		ocultarGraficas();
-            		crearGraficaCircular();
-            		break;
-            }
-            
-        });
-//crearGrafica();
+    case '1':
+      ocultarGraficas();
+      break;            			
+    case '2':
+      ocultarGraficas();
+      crearGraficaRadar();
+      break;	
+    case '3':
+      ocultarGraficas();
+      crearGraficaCircular();
+      break;
+  }
+    
+});
+
+
 div = '<div  style="width:100%"><canvas id="canvas"></canvas></div>';
 grafControl._div.innerHTML = div;
 
@@ -77,7 +90,6 @@ function ocultarGraficas(){
 
 function crearGraficaRadar(){
   var radarChartData = {
-  //labels: ['Hotel','Transportación','Vuelo','Tour','Auto','Paquetes','Autobus','Crucero','Circuito'],
   labels: ['Hotel','Vuelo','Paquetes','Autobus','Auto','Transportación','Tour','Crucero','Circuito'],
   datasets: [
    {

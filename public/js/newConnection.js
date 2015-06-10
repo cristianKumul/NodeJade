@@ -180,20 +180,20 @@ function setMarker(data) {
 
 function bar(data){
 	//console.log(data.options.iconUrl);
-	if(myControl.queue.length > 9){
-    		myControl.queue.shift();
+	if(barraVentas.queue.length > 9){
+    		barraVentas.queue.shift();
     	}
-    	myControl.queue.push(data);
+    	barraVentas.queue.push(data);
     	
     	tabla = '<div><nav class="navbar navbar-barra"><div class="container-fluid"><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav">';
-    	for(var i=0; i<myControl.queue.length; i++){
-    		//tabla =  tabla + '<li><a href="'+obj.uriFoto+'" data-toggle="lightbox" data-title="'+ obj.titulo+'" data-footer="'+obj.descripcion+'"><span class="icon icon-'+myControl.queue[i][0]+ ' canal-'+myControl.queue[i][1]+'"></span></a></li>';
-    		tabla =  tabla + '<li class="block"><a href="'+myControl.queue[i][2].uriFoto+'" data-toggle="lightbox" data-title="'+ myControl.queue[i][2].titulo+'" data-footer="'+myControl.queue[i][2].descripcion+'"><span class="icon icon-'+myControl.queue[i][0]+ ' canal-'+myControl.queue[i][1]+'"></span></a></li>';
+    	for(var i=0; i<barraVentas.queue.length; i++){
+    		//tabla =  tabla + '<li><a href="'+obj.uriFoto+'" data-toggle="lightbox" data-title="'+ obj.titulo+'" data-footer="'+obj.descripcion+'"><span class="icon icon-'+barraVentas.queue[i][0]+ ' canal-'+barraVentas.queue[i][1]+'"></span></a></li>';
+    		tabla =  tabla + '<li class="block"><a href="'+barraVentas.queue[i][2].uriFoto+'" data-toggle="lightbox" data-title="'+ barraVentas.queue[i][2].titulo+'" data-footer="'+barraVentas.queue[i][2].descripcion+'"><span class="icon icon-'+barraVentas.queue[i][0]+ ' canal-'+barraVentas.queue[i][1]+'"></span></a></li>';
     	}
     	tabla += '</ul></div></div></nav></div>';
 
     	//alert(tabla);
-    	myControl._div.innerHTML = tabla;
+    	barraVentas._div.innerHTML = tabla;
     	
 }
 
